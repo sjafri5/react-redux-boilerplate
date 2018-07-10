@@ -26,11 +26,7 @@ class ErrorBoundary extends Component {
   }
   render() {
     if (this.state.hasError) {
-      return (
-        <div style={style}>
-          Something is going wrong!! This error is caught by ErrorBoundary feature in React 16 \o/
-        </div>
-      );
+      return null;
     }
 
     return this.props.children;
