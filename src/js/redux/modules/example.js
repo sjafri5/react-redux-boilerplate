@@ -34,6 +34,7 @@ export const reducers = {
 
 export const initialState = () =>
   Map({
+    currentQuestion: 1,
     formResponse: {},
   })
 

@@ -17,7 +17,7 @@ const Main = Loadable({
 })
 
 const mapStateToProps = state => ({
-  formResponse: formResponseSelector(state),
+  form: formResponseSelector(state),
 });
 
 const mapDispatchToProps = {
@@ -28,10 +28,6 @@ const mapDispatchToProps = {
 class ExampleView extends Component {
   static propTypes = {
     formResponse: PropTypes.object.isRequired,
-  }
-
-  componentDidMount() {
-    //this.props.getAwesomeCode();
   }
 
   render() {
