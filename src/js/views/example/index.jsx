@@ -5,19 +5,19 @@ import Loadable from 'react-loadable';
 
 import LazyLoading from '../../common/components/LazyLoading/LazyLoading'
 import { actions as exampleActions } from '../../redux/modules/example';
-import { exampleSelector } from '../../redux/selectors/exampleSelector';
+import { formResponseSelector } from '../../redux/selectors/exampleSelector';
 import { ExampleWithError } from '../../common/components/Example';
 import { ErrorBoundary } from '../../common/components/Utilities';
 
 require('../../../style/index.css');
 
-const LazyExample = Loadable({
+const Main = Loadable({
   loader: () => import('../../common/components/Example/Example'),
   loading: LazyLoading,
 })
 
 const mapStateToProps = state => ({
-  example: exampleSelector(state),
+  formResponse: formResponseSelector(state),
 });
 
 const mapDispatchToProps = {
@@ -27,20 +27,17 @@ const mapDispatchToProps = {
 @connect(mapStateToProps, mapDispatchToProps)
 class ExampleView extends Component {
   static propTypes = {
-    example: PropTypes.object.isRequired,
+    formResponse: PropTypes.object.isRequired,
   }
 
   componentDidMount() {
-    this.props.getAwesomeCode();
+    //this.props.getAwesomeCode();
   }
 
   render() {
     return (
       <Fragment>
-        <LazyExample {...this.props} />
-        <ErrorBoundary>
-          <ExampleWithError {...this.props} />
-        </ErrorBoundary>
+        <Main {...this.props} />
       </Fragment>
     )
   }

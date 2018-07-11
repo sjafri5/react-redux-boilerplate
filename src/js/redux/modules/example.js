@@ -3,35 +3,38 @@ import { Map } from 'immutable';
 
 import type { exampleType } from '../../common/types/example'
 
-const GET_EXAMPLE = 'app/example/GET_EXAMPLE';
-const UPDATE_EXAMPLE = 'app/example/UPDATE_EXAMPLE';
+const SUBMIT_RESPONSE= 'SUBMIT_RESPONSE';
 
 export const constants = {
-  GET_EXAMPLE,
-  UPDATE_EXAMPLE,
+  SUBMIT_RESPONSE,
 };
 
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const getAwesomeCode = createAction(GET_EXAMPLE, () => ({}));
-export const updateExample = createAction(UPDATE_EXAMPLE, (result : exampleType) => ({ result }));
+export const submitResponse = createAction(SUBMIT_RESPONSE, (form) =>{
+     return  {
+       formResponse: { [form.questionNumber] : form.response} 
+      }
+});
 
 export const actions = {
-  getAwesomeCode,
-  updateExample,
+  submitResponse,
 };
 
 export const reducers = {
-  [UPDATE_EXAMPLE]: (state, { payload }) =>
-    state.merge({
+  [SUBMIT_RESPONSE]: (state, { payload }) => {
+    console.log('payload', payload);
+    console.log('state', state.toJS());
+    return state.merge({
       ...payload,
-    }),
+    })
+  },
 }
 
 export const initialState = () =>
   Map({
-    result: '',
+    formResponse: {},
   })
 
 export default handleActions(reducers, initialState());

@@ -7,6 +7,6 @@ const resultSelector = createSelector(
   payload => payload.get('result')
 );
 
-export const exampleSelector = state => ({
+export const formResponseSelector = state => ({
   result: resultSelector(state),
 });
