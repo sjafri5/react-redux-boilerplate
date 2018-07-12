@@ -1,11 +1,12 @@
+
 import React, { PureComponent } from 'react';
 
-class Question5 extends PureComponent {
+class Question15 extends PureComponent {
   render() {
     const { handleSubmit } = this.props;
     return (
         <div>
-          <h1>Speech:</h1>
+          <h1>Thought Process:</h1>
           <button value={'Normal Rate'} onClick={handleSubmit}>Normal Rate</button>
           <button value={'Halting'} onClick={handleSubmit}>Halting</button>
           <button value={'Pressured'} onClick={handleSubmit}>Pressured</button>
@@ -21,4 +22,4 @@ class Question5 extends PureComponent {
   }
 }
 
-export default Question5;
+export default Question15;
