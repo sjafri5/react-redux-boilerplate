@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Loadable from 'react-loadable';
 
 import LazyLoading from '../../common/components/LazyLoading/LazyLoading'
-import { actions as exampleActions } from '../../redux/modules/example';
+import { actions as formActions } from '../../redux/modules/example';
 import { formResponseSelector } from '../../redux/selectors/exampleSelector';
 import { ExampleWithError } from '../../common/components/Example';
 import { ErrorBoundary } from '../../common/components/Utilities';
@@ -21,13 +21,13 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  ...exampleActions,
+  ...formActions,
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
 class ExampleView extends Component {
   static propTypes = {
-    formResponse: PropTypes.object.isRequired,
+    form: PropTypes.object.isRequired,
   }
 
   render() {
