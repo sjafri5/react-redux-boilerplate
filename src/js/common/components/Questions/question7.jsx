@@ -7,11 +7,12 @@ class Question7 extends PureComponent {
     console.log('this.propsasfasf', this.props);
     return (
         <div>
-          <h1>Judgement:</h1>
-          <button value={'Normal Rate'} onClick={handleSubmit}>Normal Rate</button>
-          <button value={'Halting'} onClick={handleSubmit}>Halting</button>
-          <button value={'Pressured'} onClick={handleSubmit}>Pressured</button>
-          <button value={'Slow'} onClick={handleSubmit}>Slow</button>
+          <h1>I. MENTAL STATUS ASSESSMENT</h1>
+          <h2>Judgement:</h2>
+          <button value={'Good'} onClick={handleSubmit}>Good</button>
+          <button value={'Fair'} onClick={handleSubmit}>Fair</button>
+          <button value={'Poor'} onClick={handleSubmit}>Poor</button>
+          <button value={'Impaired'} onClick={handleSubmit}>Impaired</button>
         </div>
         )
   }

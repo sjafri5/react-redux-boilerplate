@@ -8,16 +8,14 @@ class Question5 extends PureComponent {
     return (
         <div>
           <h1>Barriers to Discharge:</h1>
-          <button value={'Normal Rate'} onClick={handleSubmit}>Normal Rate</button>
-          <button value={'Halting'} onClick={handleSubmit}>Halting</button>
-          <button value={'Pressured'} onClick={handleSubmit}>Pressured</button>
-          <button value={'Slow'} onClick={handleSubmit}>Slow</button>
-          <button value={'Rambling'} onClick={handleSubmit}>Rambling</button>
-          <button value={'Rapid'} onClick={handleSubmit}>Rapid</button>
-          <button value={'Fluent'} onClick={handleSubmit}>Fluent</button>
-          <button value={'Mute'} onClick={handleSubmit}>Mute</button>
-          <button value={'Soft'} onClick={handleSubmit}>Soft</button>
-          <button value={'Loud'} onClick={handleSubmit}>Loud</button>
+          <button value={'Discharge Planning'} onClick={handleSubmit}>Discharge Planning</button>
+          <button value={'High Risk for Relapse'} onClick={handleSubmit}>High Risk for Relapse</button>
+          <button value={'Lack of Support'} onClick={handleSubmit}>Lack of Support</button>
+          <button value={'Noncompliance'} onClick={handleSubmit}>Noncompliance</button>
+          <button value={'Medication Changes'} onClick={handleSubmit}>Medication Changes</button>
+          <button value={'Family Session'} onClick={handleSubmit}>Family Session</button>
+          <button value={'Safety Issues'} onClick={handleSubmit}>Safety Issues</button>
+          <button value={'Other'} onClick={handleSubmit}>Other</button>
         </div>
         )
   }

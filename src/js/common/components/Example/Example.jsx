@@ -53,9 +53,9 @@ class Main extends PureComponent {
   }
 
   questionComponent() {
-    console.log('this.propasques', this.props);
+    console.log('this.props.form', this.props.form);
     if (this.props.form.reviewForm) {
-      return <Review handleDownload={this.handleDownload.bind(this)}/>
+      return <Review form={this.props.form} handleDownload={this.handleDownload.bind(this)}/>
     }
 
     switch (this.props.form.currentQuestion) {

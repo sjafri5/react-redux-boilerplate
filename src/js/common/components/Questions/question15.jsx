@@ -6,17 +6,20 @@ class Question15 extends PureComponent {
     const { handleSubmit } = this.props;
     return (
         <div>
-          <h1>Thought Process:</h1>
-          <button value={'Normal Rate'} onClick={handleSubmit}>Normal Rate</button>
-          <button value={'Halting'} onClick={handleSubmit}>Halting</button>
-          <button value={'Pressured'} onClick={handleSubmit}>Pressured</button>
-          <button value={'Slow'} onClick={handleSubmit}>Slow</button>
-          <button value={'Rambling'} onClick={handleSubmit}>Rambling</button>
-          <button value={'Rapid'} onClick={handleSubmit}>Rapid</button>
-          <button value={'Fluent'} onClick={handleSubmit}>Fluent</button>
-          <button value={'Mute'} onClick={handleSubmit}>Mute</button>
-          <button value={'Soft'} onClick={handleSubmit}>Soft</button>
-          <button value={'Loud'} onClick={handleSubmit}>Loud</button>
+          <h2>Thought Process:</h2>
+          <button value={'Logical'} onClick={handleSubmit}>Logical</button>
+          <button value={'Goal Directed'} onClick={handleSubmit}>Goal Directed</button>
+          <button value={'Illogical'} onClick={handleSubmit}>Illogical</button>
+          <button value={'Poverty of Thought'} onClick={handleSubmit}>Poverty of Thought</button>
+          <button value={'Disorganized'} onClick={handleSubmit}>Disorganized</button>
+          <button value={'Intact'} onClick={handleSubmit}>Intact</button>
+          <button value={'Loose'} onClick={handleSubmit}>Loose</button>
+          <button value={'Tangential'} onClick={handleSubmit}>Tangential</button>
+          <button value={'Blocking'} onClick={handleSubmit}>Blocking</button>
+          <button value={'Circumstantial'} onClick={handleSubmit}>Circumstantial</button>
+          <button value={'Flight of Ideas'} onClick={handleSubmit}>Flight of Ideas</button>
+          <button value={'Perservation'} onClick={handleSubmit}>Perservation</button>
+          <button value={'Other'} onClick={handleSubmit}>Other</button>
         </div>
         )
   }

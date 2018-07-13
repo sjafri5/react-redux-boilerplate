@@ -6,17 +6,12 @@ class Question8 extends PureComponent {
     const { handleSubmit } = this.props;
     return (
         <div>
-          <h1>Impulse Control:</h1>
-          <button value={'Normal Rate'} onClick={handleSubmit}>Normal Rate</button>
-          <button value={'Halting'} onClick={handleSubmit}>Halting</button>
-          <button value={'Pressured'} onClick={handleSubmit}>Pressured</button>
-          <button value={'Slow'} onClick={handleSubmit}>Slow</button>
-          <button value={'Rambling'} onClick={handleSubmit}>Rambling</button>
-          <button value={'Rapid'} onClick={handleSubmit}>Rapid</button>
-          <button value={'Fluent'} onClick={handleSubmit}>Fluent</button>
-          <button value={'Mute'} onClick={handleSubmit}>Mute</button>
-          <button value={'Soft'} onClick={handleSubmit}>Soft</button>
-          <button value={'Loud'} onClick={handleSubmit}>Loud</button>
+          <h1>I. MENTAL STATUS ASSESSMENT</h1>
+          <h2>Impulse Control:</h2>
+          <button value={'Good'} onClick={handleSubmit}>Good</button>
+          <button value={'Fair'} onClick={handleSubmit}>Fair</button>
+          <button value={'Poor'} onClick={handleSubmit}>Poor</button>
+          <button value={'Impaired'} onClick={handleSubmit}>Impaired</button>
         </div>
         )
   }

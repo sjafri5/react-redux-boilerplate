@@ -42,13 +42,12 @@ export const actions = {
 
 export const reducers = {
   [SUBMIT_RESPONSE]: (state, { payload }) => {
-    return state.merge({
-      ...payload,
-    })
+    console.log('raza', state.get('formResponse'));
+    console.log('pl', payload);
+    const sip= state.get('formResponse').merge(payload.formResponse)
+    return state.set('formResponse', sip)
   },
   [NEXT_QUESTION]: (state, { payload }) => {
-    console.log('state', state);
-    console.log('payload', payload);
     return state.merge({
       ...payload,
     })
@@ -59,7 +58,7 @@ export const initialState = () =>
   Map({
     reviewForm: false,
     currentQuestion: 1,
-    formResponse: {},
+    formResponse: new Map(),
   })
 
 export default handleActions(reducers, initialState());

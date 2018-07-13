@@ -7,17 +7,15 @@ class Question16 extends PureComponent {
     console.log('this.propsasfasf', this.props);
     return (
         <div>
-          <h1>Thought Content:</h1>
-          <button value={'Normal Rate'} onClick={handleSubmit}>Normal Rate</button>
-          <button value={'Halting'} onClick={handleSubmit}>Halting</button>
-          <button value={'Pressured'} onClick={handleSubmit}>Pressured</button>
-          <button value={'Slow'} onClick={handleSubmit}>Slow</button>
-          <button value={'Rambling'} onClick={handleSubmit}>Rambling</button>
-          <button value={'Rapid'} onClick={handleSubmit}>Rapid</button>
-          <button value={'Fluent'} onClick={handleSubmit}>Fluent</button>
-          <button value={'Mute'} onClick={handleSubmit}>Mute</button>
-          <button value={'Soft'} onClick={handleSubmit}>Soft</button>
-          <button value={'Loud'} onClick={handleSubmit}>Loud</button>
+          <h2>Thought Content:</h2>
+          <button value={'Appropriate -- Problems Denied'} onClick={handleSubmit}>Appropriate -- Problems Denied</button>
+          <button value={'Paranoid'} onClick={handleSubmit}>Paranoid</button>
+          <button value={'Obsessive'} onClick={handleSubmit}>Obsessive</button>
+          <button value={'Delusional'} onClick={handleSubmit}>Delusional</button>
+          <button value={'Religiosity'} onClick={handleSubmit}>Religiosity</button>
+          <button value={'Other'} onClick={handleSubmit}>Other</button>
+          <button value={'Denies Hallucinations'} onClick={handleSubmit}>Denies Hallucinations</button>
+          <button value={'Hallucinations'} onClick={handleSubmit}>Hallucinations:</button>
         </div>
         )
   }

@@ -1,26 +1,23 @@
 
 import React, { PureComponent } from 'react';
 
-class Question5 extends PureComponent {
+class Question25 extends PureComponent {
   render() {
     const { handleSubmit } = this.props;
     console.log('this.propsasfasf', this.props);
     return (
         <div>
           <h1>Therapy/Treatment:</h1>
-          <button value={'Normal Rate'} onClick={handleSubmit}>Normal Rate</button>
-          <button value={'Halting'} onClick={handleSubmit}>Halting</button>
-          <button value={'Pressured'} onClick={handleSubmit}>Pressured</button>
-          <button value={'Slow'} onClick={handleSubmit}>Slow</button>
-          <button value={'Rambling'} onClick={handleSubmit}>Rambling</button>
-          <button value={'Rapid'} onClick={handleSubmit}>Rapid</button>
-          <button value={'Fluent'} onClick={handleSubmit}>Fluent</button>
-          <button value={'Mute'} onClick={handleSubmit}>Mute</button>
-          <button value={'Soft'} onClick={handleSubmit}>Soft</button>
-          <button value={'Loud'} onClick={handleSubmit}>Loud</button>
+          <button value={'Continue current treatment plan'} onClick={handleSubmit}>Continue current treatment plan</button>
+          <button value={'Change in observation level or precaution(s):'} onClick={handleSubmit}>Change in observation level or precaution(s):</button>
+          <button value={'Lab ordered:'} onClick={handleSubmit}>Lab ordered:</button>
+          <button value={'Modify treatment plan (Describe changes to treatment plan):'} onClick={handleSubmit}>Modify treatment plan (Describe changes to treatment plan):</button>
+          <button value={'Order ____________________________ medications and titrate dosage in order to:'} onClick={handleSubmit}>Order ____________________________ medications and titrate dosage in order to:</button>
+          <button value={'Individual session with patient to educate on symptom management of: _________________________________________ through the use of therapy.'} onClick={handleSubmit}>Individual session with patient to educate on symptom management of: _________________________________________ through the use
+            of therapy</button>
         </div>
         )
   }
 }
 
-export default Question5;
+export default Question25;

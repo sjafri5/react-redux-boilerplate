@@ -1,26 +1,23 @@
 
 import React, { PureComponent } from 'react';
 
-class Question5 extends PureComponent {
+class Question21 extends PureComponent {
   render() {
     const { handleSubmit } = this.props;
     console.log('this.propsasfasf', this.props);
     return (
         <div>
-          <h1>Speech:</h1>
-          <button value={'Normal Rate'} onClick={handleSubmit}>Normal Rate</button>
-          <button value={'Halting'} onClick={handleSubmit}>Halting</button>
-          <button value={'Pressured'} onClick={handleSubmit}>Pressured</button>
-          <button value={'Slow'} onClick={handleSubmit}>Slow</button>
-          <button value={'Rambling'} onClick={handleSubmit}>Rambling</button>
-          <button value={'Rapid'} onClick={handleSubmit}>Rapid</button>
-          <button value={'Fluent'} onClick={handleSubmit}>Fluent</button>
-          <button value={'Mute'} onClick={handleSubmit}>Mute</button>
-          <button value={'Soft'} onClick={handleSubmit}>Soft</button>
-          <button value={'Loud'} onClick={handleSubmit}>Loud</button>
+          <h1>II. ASSESSMENT</h1>
+          <h2>Overall Response to Treatment:</h2>
+          <button value={'Reached maximum benefit'} onClick={handleSubmit}>Reached maximum benefit</button>
+          <button value={'Improving but has not reached maximum benefit from this level of care'} onClick={handleSubmit}>Improving but has not reached maximum benefit from this level of care</button>
+          <button value={'Minimum improvement'} onClick={handleSubmit}>Minimum improvement</button>
+          <button value={'Showing no progress'} onClick={handleSubmit}>Showing no progress</button>
+          <button value={'Deteriorating'} onClick={handleSubmit}>Deteriorating</button>
+          <button value={'Other'} onClick={handleSubmit}>Other</button>
         </div>
         )
   }
 }
 
-export default Question5;
+export default Question21;

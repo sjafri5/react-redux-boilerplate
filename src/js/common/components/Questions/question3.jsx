@@ -6,7 +6,8 @@ class Question3 extends PureComponent {
     console.log('this.propsasfasf', this.props);
     return (
         <div>
-          <h1>Appearance</h1>
+          <h1>I. MENTAL STATUS ASSESSMENT</h1>
+          <h2>Appearance</h2>
           <button value={'Neat & Clean'} onClick={handleSubmit}>Neat & Clean</button>
           <button value={'Poor Hygeine'} onClick={handleSubmit}>Poor Hygeine</button>
           <button value={'Malodorous'} onClick={handleSubmit}>Maladorous</button>

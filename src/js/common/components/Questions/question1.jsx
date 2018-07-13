@@ -6,7 +6,7 @@ class Question1 extends PureComponent {
     console.log('this.propsasfasf', this.props);
     return (
         <div>
-          <h1>Coordination of care provided with:</h1>
+          <h2>Coordination of care provided with:</h2>
           <button value={'Nursing staff'} onClick={handleSubmit}>Nursing Staff</button>
           <button value={'Treatment Team'} onClick={handleSubmit}>Treatment Team</button>
           <button value={'Social Work'} onClick={handleSubmit}>Social Work</button>

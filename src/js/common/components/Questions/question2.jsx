@@ -5,7 +5,8 @@ class Question2 extends PureComponent {
     const { handleSubmit } = this.props;
     return (
         <div>
-          <h1>Orientation:</h1>
+          <h1>I. MENTAL STATUS ASSESSMENT</h1>
+          <h2>Orientation:</h2>
           <button value={'Person'} onClick={handleSubmit}>Person</button>
           <button value={'Situation'} onClick={handleSubmit}>Situation</button>
           <button value={'Place'} onClick={handleSubmit}>Place</button>
