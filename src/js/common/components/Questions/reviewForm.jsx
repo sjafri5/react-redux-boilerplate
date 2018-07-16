@@ -18,6 +18,7 @@ class Review extends PureComponent {
           <h1>Review Page</h1>
           {this.transcribeAnswers()}
 
+          <button onClick={handleDownload}>Submit</button>
         </div>
         )
   }

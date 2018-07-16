@@ -35,7 +35,6 @@ import {
   Review 
 } from '../Questions';
 
-//import Question1 from '../../Questions/question';
 
 class Main extends PureComponent {
   handleSubmit(e) {
@@ -49,7 +48,15 @@ class Main extends PureComponent {
   handleDownload(){
     const doc = new jsPDF();
 
-    doc.text('Raz p!', 10, 10);
+    doc.text(QuestionMap['1'].question, 10, 10);
+    QuestionMap['1'].answers.map((answer, index) => {
+      console.log('index', index);
+      const fillStyle = answer === this.props.form.formData.get('1') ? 'F': 'S' 
+      doc.rect((10 + (index * 25)), 20, 2, 2, fillStyle)
+      doc.setFontSize(8)
+      doc.text(answer, (13 + (index * 25)), 20)
+    })
+
     doc.save('a4.pdf');
   }
 
