@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import jsPDF from 'jspdf'
 
+import QuestionMap from '../../../question-map.json';
 import './Example.css';
 import './Example.css';
 
@@ -53,7 +54,8 @@ class Main extends PureComponent {
   }
 
   questionComponent() {
-    console.log('this.props.form', this.props.form);
+    //const questionMap = JSON.parse(QuestionMap)
+    console.log('question MPAAPAPAPAMform', QuestionMap);
     if (this.props.form.reviewForm) {
       return <Review form={this.props.form} handleDownload={this.handleDownload.bind(this)}/>
     }

@@ -22,7 +22,7 @@ export const submitResponse = createAction(SUBMIT_RESPONSE, (form) =>{
 export const nextQuestion= createAction(NEXT_QUESTION, (currentQuestion) =>{
   let reviewForm;
   let nextQuestion = currentQuestion
-  if (currentQuestion < 26) {
+  if (currentQuestion < 4) {
     nextQuestion = nextQuestion + 1;
     reviewForm = false
   } else {
@@ -42,8 +42,6 @@ export const actions = {
 
 export const reducers = {
   [SUBMIT_RESPONSE]: (state, { payload }) => {
-    console.log('raza', state.get('formResponse'));
-    console.log('pl', payload);
     const sip= state.get('formResponse').merge(payload.formResponse)
     return state.set('formResponse', sip)
   },
