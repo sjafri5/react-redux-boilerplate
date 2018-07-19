@@ -10,5 +10,279 @@
       "Caregiver",
       "Other"
     ]
-  }
+  },
+  "2": {
+    "question": "Orientation:",
+    "answers": [
+      "Person",
+      "Situation",
+      "Place",
+      "Time"
+    ]
+  },
+  "3": {
+    "question": "Appearance",
+    "answers": [
+      "Neat & Clean",
+      "Poor Hygeine",
+      "Malodorous",
+      "Bizarre",
+      "Disheveled",
+      "Other"
+    ]
+  },
+  "4": {
+    "question": "Behavior",
+    "answers": [
+      "Cooperative",
+      "Resistent",
+      "Anxious",
+      "Defensive",
+      "Guarded",
+      "Passive",
+      "Threatening",
+      "Hyperactive",
+      "Impulsive",
+      "Isolated",
+      "Withdrawn",
+      "Distrustful",
+      "Other"
+    ]
+  },
+  "5": {
+    "question": "Speech",
+    "answers": [
+      "Normal Rate",
+      "Halting",
+      "Pressured",
+      "Slow",
+      "Rambling",
+      "Rapid",
+      "Fluent",
+      "Mute",
+      "Soft",
+      "Loud",
+      "Other"
+    ]
+  },
+  "6": {
+    "question": "Insight:",
+    "answers": [
+      "Good",
+      "Fair",
+      "Poor",
+      "Impaired"
+    ]
+  },
+  "7": {
+    "question": "Judgement:",
+    "answers": [
+      "Good",
+      "Fair",
+      "Poor",
+      "Impaired"
+    ]
+  },
+  "8": {
+    "question": "Impulse Control:",
+    "answers": [
+      "Good",
+      "Fair",
+      "Poor",
+      "Impaired"
+    ]
+  },
+  "9": {
+    "question": "Mood:",
+    "answers": [
+      "Neutral",
+      "Euthymic",
+      "Depressed",
+      "Elated",
+      "Euphoric",
+      "Angry",
+      "Anxious",
+      "Irritable",
+      "Sad",
+      "Other",
+    ]
+  },
+  "10": {
+    "question": "Affect:",
+    "answers": [
+      "Appropriate",
+      "Incongruent",
+      "Manic",
+      "Labile",
+      "Exaggerated",
+      "Blunted",
+      "Flat",
+      "Apathetic",
+      "Restricted",
+      "Reactive",
+      "Other"
+    ]
+  },
+  "11": {
+    "question": "Attention/Concentration:",
+    "answers": [
+      "Intact",
+      "Attentive/Focused",
+      "Inattentive",
+      "Distracted",
+      "Poor Attention",
+      "Confused"
+    ]
+  },
+  "12": {
+    "question": "Memory - Intermediate:",
+    "answers": [
+      "Impaired",
+      "Intact"
+    ]
+  },
+  "13": {
+    "question": "Memory - Recent Past",
+    "answers": [
+      "Impaired",
+      "Intact"
+    ]
+  },
+  "14": {
+    "question": "Memory - Remote Past",
+    "answers": [
+      "Impaired",
+      "Intact"
+    ]
+  },
+  "15": {
+    "question": "Thought Process:",
+    "answers": [
+      "Logical",
+      "Goal Directed",
+      "Illogical",
+      "Poverty of Thought",
+      "Intact",
+      "Loose",
+      "Tangential",
+      "Blocking",
+      "Circumstantial",
+      "Flight of Ideas",
+      "Perservation",
+      "Other"
+    ]
+  },
+  "16": {
+    "question": "Thought Content:",
+    "answers": [
+      "Appropriate -- Problems Denied",
+      "Paranoid",
+      "Obsessive",
+      "Delusional",
+      "Religiosity",
+      "Other",
+      "Denies Hallucinations",
+      "Hallucinations"
+    ]
+  },
+  "17": {
+    "question": "Risk of Harm to Self Others:",
+    "answers": [
+      "Patient denies thought, plan or ideation to harm self",
+      "Passive death wishes",
+      "Patient unable to contract for safety",
+      "Suicidal Risk"
+    ]
+  },
+  "18": {
+    "question": "Risk of Harm to Others:",
+    "answers": [
+      "Patient denies thought, plan or ideation to harm others",
+      "Passive thoughts to hurt others",
+      "Inability to care for self",
+      "Homicidal Risk"
+    ]
+  },
+  "19": {
+    "question": "Behavioral:",
+    "answers": [
+      "Improving",
+      "Well Controlled",
+      "Resolved",
+      "Poorly Controlled",
+      "Failing to Change",
+      "Minimal Improvement",
+      "Other"
+    ]
+  },
+  "20": {
+    "question": "Overall Response to Medication:",
+    "answers": [
+      "Poor Response",
+      "Partial Response",
+      "Improving",
+      "Tolerating",
+      "Resolved",
+      "Side Effects",
+      "Other"
+    ]
+  },
+  "21": {
+    "question": "Overall Response to Treatment:",
+    "answers": [
+      "Reached maximum benefit",
+      "Improving but has not reached maximum benefit from this level of care",
+      "Minimum improvement",
+      "Showing no progress",
+      "Deteriorating",
+      "Other"
+    ]
+  },
+  "22": {
+    "question": "Barriers to Discharge:",
+    "answers": [
+      "Discharge Planning",
+      "High Risk for Relapse",
+      "Lack of Support",
+      "Noncompliance",
+      "Medication Changes",
+      "Family Session",
+      "Safety Issues",
+      "Other"
+    ]
+  },
+  "23": {
+    "question": "Justification for continued stay:",
+    "answers": [
+      "Continued danger to self and/or others",
+      "Continued behavior intolerable to patient or society",
+      "High probability of A or B recurring if patient were to be discharged, and imminent re-hospitalization likely",
+      "Recovery depends on use of modality, but patient unwilling or unable to cooperate",
+      "Major change of clinical conditions require extended treatment",
+      "Has a general medical condition (other than mental disorder) requiring hospital care and due to psychological aspects, patient cannot be managed as well on non-psychiatric unit."
+    ]
+  },
+  "24": {
+    "question": "Medication:",
+    "answers": [
+      "Continue current medication/No change",
+      "Change (Specify medication and rationale in narrative)"
+    ]
+  },
+  "25": {
+    "question": "Therapy/Treatment:",
+    "answers": [
+      "Continue current treatment plan",
+      "Change in observation level or precaution(s):",
+      "Lab ordered",
+      "Modify treatment plan (Describe changes to treatment plan):",
+      "Order ____________________________ medications and titrate dosage in order to:"
+    ]
+  },
+  "26": {
+    "question": "",
+    "answers": [
+      "no answer"
+    ]
+  },
 }

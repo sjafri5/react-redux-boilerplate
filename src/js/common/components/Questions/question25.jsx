@@ -4,7 +4,6 @@ import React, { PureComponent } from 'react';
 class Question25 extends PureComponent {
   render() {
     const { handleSubmit } = this.props;
-    console.log('this.propsasfasf', this.props);
     return (
         <div>
           <h1>Therapy/Treatment:</h1>
