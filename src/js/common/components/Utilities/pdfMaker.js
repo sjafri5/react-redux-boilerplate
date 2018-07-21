@@ -31,9 +31,23 @@ class PdfMaker {
     let questionXAxis = 0
     questionCount.map((questionNumber, index) => {
       this.doc.setFontSize(12)
+
       if(questionNumber === '2'){
         this.doc.text('I. MENTAL STATUS ASSESSMENT', 10, yAxis);
         yAxis += 8
+      }
+
+      if(questionNumber === '23'){
+        this.doc.text('III. TREATMENT PLAN', 10, yAxis);
+        yAxis += 8
+      }
+
+      if(questionNumber === '19'){
+        this.doc.addPage();
+        yAxis = 20
+        this.doc.text('II. ASSESSMENT', 10, yAxis);
+        yAxis += 8
+        questionXAxis = 0
       }
 
       if (this.questionMap[questionNumber].format === "3") {
