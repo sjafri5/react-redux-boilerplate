@@ -66,6 +66,7 @@
     ]
   },
   "6": {
+    "format": "3",
     "question": "Insight:",
     "answers": [
       "Good",
@@ -75,6 +76,7 @@
     ]
   },
   "7": {
+    "format": "3",
     "question": "Judgement:",
     "answers": [
       "Good",
@@ -84,6 +86,7 @@
     ]
   },
   "8": {
+    "format": "3",
     "question": "Impulse Control:",
     "answers": [
       "Good",
@@ -135,6 +138,7 @@
     ]
   },
   "12": {
+    "format": "3",
     "question": "Memory - Intermediate:",
     "answers": [
       "Impaired",
@@ -142,6 +146,7 @@
     ]
   },
   "13": {
+    "format": "3",
     "question": "Memory - Recent Past",
     "answers": [
       "Impaired",
@@ -149,6 +154,7 @@
     ]
   },
   "14": {
+    "format": "3",
     "question": "Memory - Remote Past",
     "answers": [
       "Impaired",

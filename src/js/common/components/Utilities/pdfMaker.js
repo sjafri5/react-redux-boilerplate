@@ -28,24 +28,50 @@ class PdfMaker {
   transcribeQuestions(){
     const questionCount = Array.from(Array(26)).map((e,i)=>(i+ 1).toString())
     let yAxis = 20
+    let questionXAxis = 0
     questionCount.map((questionNumber, index) => {
       this.doc.setFontSize(12)
       if(questionNumber === '2'){
         this.doc.text('I. MENTAL STATUS ASSESSMENT', 10, yAxis);
         yAxis += 8
       }
-      this.doc.text(this.questionMap[questionNumber].question, 10, yAxis);
-      this.transcribeAnswers(questionNumber, yAxis)
-        if (QuestionMap[questionNumber].answers.length > 6) {
-          yAxis += 20;
-        } else {
+
+      if (this.questionMap[questionNumber].format === "3") {
+        this.doc.text(this.questionMap[questionNumber].question, 10 + questionXAxis, yAxis);
+        this.transcribeTriplexAnswers(questionNumber, yAxis, questionXAxis)
+        questionXAxis += 65;
+
+        const nextLineQuestion = ["Impulse Control:", "Memory - Remote Past" ]
+        if (nextLineQuestion.includes(this.questionMap[questionNumber].question)) {
+          questionXAxis = 0;
           yAxis += 15;
         }
+        return;
+      }
+
+      this.doc.text(this.questionMap[questionNumber].question, 10 , yAxis);
+      this.transcribeAnswers(questionNumber, yAxis)
+
+      if (QuestionMap[questionNumber].answers.length > 6) {
+        yAxis += 20;
+      } else {
+        yAxis += 15;
+      }
+    })
+  }
+
+  transcribeTriplexAnswers(questionNumber, yAxis, qxAxis){
+    let xAxis = 10
+    QuestionMap[questionNumber].answers.map((answer, index) => {
+      const fillStyle = answer === this.formData.get(questionNumber) ? 'F': 'S' 
+      this.doc.rect(qxAxis + xAxis, yAxis + 5, 2, 2, fillStyle)
+      this.doc.setFontSize(8)
+      this.doc.text(answer, qxAxis + xAxis + 3, yAxis + 7)
+      xAxis += 15
     })
   }
 
   transcribeAnswers(questionNumber, yAxis){
-    const zeAnswers = QuestionMap[questionNumber].answers
     let xAxis = 10
     QuestionMap[questionNumber].answers.map((answer, index) => {
       const fillStyle = answer === this.formData.get(questionNumber) ? 'F': 'S' 
