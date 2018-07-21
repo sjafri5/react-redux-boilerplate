@@ -104,7 +104,7 @@
       "Anxious",
       "Irritable",
       "Sad",
-      "Other",
+      "Other"
     ]
   },
   "10": {
@@ -284,5 +284,5 @@
     "answers": [
       "no answer"
     ]
-  },
+  }
 }

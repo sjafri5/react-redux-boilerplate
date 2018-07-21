@@ -3,9 +3,20 @@ import QuestionMap from '../../../question-map.json';
 import each from 'lodash/each'
 
 class Review extends PureComponent {
-  transcribeAnswers(){
-    return QuestionMap['1'].answers.map((answer) => {
-      const charNumber = answer === this.props.form.formData.get('1') ? 9632: 9633
+  transcribeQuestions(){
+    const questionCount = Array.from(Array(26)).map((e,i)=>(i+ 1).toString())
+    return questionCount.map((QuestionNumber) => {
+      return <div>
+        <h4>{QuestionMap[QuestionNumber].question}</h4>
+        {this.transcribeAnswers(QuestionNumber)}
+        <br/>
+      </div>
+    })
+  }
+
+  transcribeAnswers(questionNumber){
+    return QuestionMap[questionNumber].answers.map((answer) => {
+      const charNumber = answer === this.props.form.formData.get(questionNumber) ? 9632: 9633
       return <span>{String.fromCharCode(charNumber) + answer}</span>
 
     })
@@ -16,7 +27,8 @@ class Review extends PureComponent {
     return (
         <div>
           <h1>Review Page</h1>
-          {this.transcribeAnswers()}
+
+          {this.transcribeQuestions()}
 
           <button onClick={handleDownload}>Submit</button>
         </div>
