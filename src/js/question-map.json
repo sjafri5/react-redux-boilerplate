@@ -181,24 +181,25 @@
   "16": {
     "question": "Thought Content:",
     "answers": [
+      "Denies Hallucinations",
+      "Hallucinations",
       "Appropriate -- Problems Denied",
       "Paranoid",
       "Obsessive",
       "Delusional",
       "Religiosity",
-      "Other",
-      "Denies Hallucinations",
-      "Hallucinations"
+      "Other"
     ]
   },
   "17": {
-    "question": "Risk of Harm to Self Others:",
+    "question": "Risk of Harm to Self:",
     "answers": [
       "Patient denies thought, plan or ideation to harm self",
       "Passive death wishes",
       "Patient unable to contract for safety",
       "Suicidal Risk"
-    ]
+    ],
+    "problematic": "true"
   },
   "18": {
     "question": "Risk of Harm to Others:",
@@ -207,7 +208,8 @@
       "Passive thoughts to hurt others",
       "Inability to care for self",
       "Homicidal Risk"
-    ]
+    ],
+    "problematic": "true"
   },
   "19": {
     "question": "Behavioral:",
@@ -236,8 +238,8 @@
   "21": {
     "question": "Overall Response to Treatment:",
     "answers": [
-      "Reached maximum benefit",
       "Improving but has not reached maximum benefit from this level of care",
+      "Reached maximum benefit",
       "Minimum improvement",
       "Showing no progress",
       "Deteriorating",

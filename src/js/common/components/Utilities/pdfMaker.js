@@ -66,7 +66,7 @@ class PdfMaker {
       this.doc.text(this.questionMap[questionNumber].question, 10 , yAxis);
       this.transcribeAnswers(questionNumber, yAxis)
 
-      if (QuestionMap[questionNumber].answers.length > 6) {
+      if (QuestionMap[questionNumber].answers.length > 6 || QuestionMap[questionNumber].problematic) {
         yAxis += 20;
       } else {
         yAxis += 15;
@@ -86,19 +86,64 @@ class PdfMaker {
   }
 
   transcribeAnswers(questionNumber, yAxis){
+    //let longAnswer = 0
     let xAxis = 10
     QuestionMap[questionNumber].answers.map((answer, index) => {
+
+      if (QuestionMap[questionNumber].problematic)  {
+        this.handleProblematicQuestions(questionNumber, answer, index, yAxis);
+        return;
+      }
+
       const fillStyle = answer === this.formData.get(questionNumber) ? 'F': 'S' 
-      this.doc.rect(xAxis, yAxis + 5, 2, 2, fillStyle)
+      this.doc.rect(xAxis , yAxis + 5, 2, 2, fillStyle)
       this.doc.setFontSize(8)
       this.doc.text(answer, xAxis + 3, yAxis + 7)
+
+      if (answer.length > 15) {
+          xAxis += answer.length - 15
+      }
+
       if (index === 5){
         xAxis = 10
         yAxis += 5
       } else {
         xAxis += 25
       }
+
     })
+  }
+
+  handleProblematicQuestions(questionNumber, answer, index, yAxis){
+    switch(questionNumber) {
+      case '17': 
+      case '18': 
+        this.handle17(questionNumber, answer, index, yAxis);
+    }
+  }
+
+  handle17(questionNumber, answer, index, yAxis){
+    let xAxis = 10
+    switch(index) {
+      case 0: 
+        break;
+      case 1: 
+        xAxis += 80
+        break;
+      case 2: 
+        xAxis = 10
+        yAxis += 5
+        break;
+      case 3: 
+        xAxis += 80
+        yAxis += 5
+        break;
+    }
+    
+    const fillStyle = answer === this.formData.get(questionNumber) ? 'F': 'S' 
+    this.doc.rect(xAxis, yAxis + 5, 2, 2, fillStyle)
+    this.doc.setFontSize(8)
+    this.doc.text(answer, xAxis + 3, yAxis + 7)
   }
 }
 
