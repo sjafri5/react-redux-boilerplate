@@ -9,6 +9,7 @@ class Question26 extends PureComponent {
       text: ''
     }
   }
+
   handleChange(e){
     e.preventDefault();
     let input = e.target.value;
