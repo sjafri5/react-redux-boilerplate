@@ -16,6 +16,15 @@ class Review extends PureComponent {
 
   transcribeAnswers(questionNumber){
     return QuestionMap[questionNumber].answers.map((answer) => {
+      if (questionNumber === '26') {
+        return (
+          <div>
+            <h4>IV. PERTINENT NEW HISTORY - CURRENT SIGNS/SYMPTOMS - FINDINGS</h4>
+            <span>{this.props.form.formData.get('1')}</span>
+          </div>
+        )
+      }
+
       const charNumber = answer === this.props.form.formData.get(questionNumber) ? 9632: 9633
       return <span>{String.fromCharCode(charNumber) + answer}</span>
 

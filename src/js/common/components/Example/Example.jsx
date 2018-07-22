@@ -41,6 +41,7 @@ class Main extends PureComponent {
     const { form: { currentQuestion  } } = this.props
     e.preventDefault();
     const response = e.target.value;
+    console.log('response', response);
     this.props.submitResponse({questionNumber: currentQuestion, response})
     this.props.nextQuestion(currentQuestion)
   }

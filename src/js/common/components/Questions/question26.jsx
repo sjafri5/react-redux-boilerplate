@@ -34,7 +34,7 @@ class Question26 extends PureComponent {
           <h1>PERTINENT NEW HISTORY – CURRENT SIGNS AND SYMPTOMS - FINDINGS:</h1>
           <textarea rows="10" cols="80" onChange={this.handleChange.bind(this)} value={this.state.text}>
           </textarea>
-          <button value={'Submit'} onClick={handleSubmit}>Submit</button>
+          <button value={this.state.text} onClick={handleSubmit}>Submit</button>
         </div>
         )
   }

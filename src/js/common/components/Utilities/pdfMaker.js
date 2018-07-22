@@ -129,6 +129,26 @@ class PdfMaker {
   }
 
   handleProblematicQuestions(questionNumber, answer, index){
+    switch(questionNumber) {
+      case '17': 
+      case '18': 
+        this.handle17(questionNumber, answer, index);
+        break;
+      case '26': 
+        this.handle26(questionNumber, answer, index);
+        break;
+    }
+  }
+
+  handle26(questionNumber, answer, index){
+    this.doc.text('IV. PERTINENT NEW HISTORY - CURRENT SIGNS/SYMPTOMS - FINDINGS', 10, this.yAxis);
+
+    this.doc.setFontSize(8)
+    this.doc.text(this.formData.get('1'), 10, this.yAxis + 7)
+    }
+
+
+  handle17(questionNumber, answer, index){
     let xAxis = 10
     switch(index) {
       case 0: 
