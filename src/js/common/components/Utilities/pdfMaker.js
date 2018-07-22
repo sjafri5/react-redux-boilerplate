@@ -144,7 +144,7 @@ class PdfMaker {
     this.doc.text('IV. PERTINENT NEW HISTORY - CURRENT SIGNS/SYMPTOMS - FINDINGS', 10, this.yAxis);
 
     this.doc.setFontSize(8)
-    this.doc.text(this.formData.get('1'), 10, this.yAxis + 7)
+    this.doc.text(this.formData.get(questionNumber), 10, this.yAxis + 7)
     }
 
 

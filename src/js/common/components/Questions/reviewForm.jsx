@@ -20,7 +20,7 @@ class Review extends PureComponent {
         return (
           <div>
             <h4>IV. PERTINENT NEW HISTORY - CURRENT SIGNS/SYMPTOMS - FINDINGS</h4>
-            <span>{this.props.form.formData.get('1')}</span>
+            <span>{this.props.form.formData.get(questionNumber)}</span>
           </div>
         )
       }
