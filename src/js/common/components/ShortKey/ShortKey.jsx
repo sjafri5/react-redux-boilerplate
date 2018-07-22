@@ -9,7 +9,6 @@ class Main extends PureComponent {
       addShortKey: false,
       text: ''
     }
-
   }
 
   handleAddKeys(){
@@ -28,6 +27,34 @@ class Main extends PureComponent {
 
   handleSubmitKeyChange(){
     const nextKeyNum = Object.keys(CommonPhrases).length + 1;
+    CommonPhrases[nextKeyNum] = this.state.text;
+    console.log('boobbbb', fs);
+    fs.writeFile("./object.json", JSON.stringify({a: 1, b: 3}, null, 4), (err) => {
+      if (err) {
+        console.error(err);
+        return;
+      };
+      console.log("File has been created");
+
+    });
+
+
+    file.writeFileSync('../../../common-phrases.json', JSON.stringify(CommonPhrases));
+    console.log('yohoo');
+    //console.log('file', file);
+
+    //file.readFile('../../../common-phrases.json', 'utf8', function readFileCallback(err, data){
+      //if (err){
+        //console.log(err);
+      //} else {
+        //obj = JSON.parse(data); //now it an object
+        //console.log('orazP homsilie', data);
+        //obj.table.push({id: 2, square:3}); //add some data
+        //json = JSON.stringify(obj); //convert it back to json
+        //fs.writeFile('myjsonfile.json', json, 'utf8', callback); // write it back 
+
+      //}
+    //});
 
     this.setState({
       addShortKey: false
@@ -59,11 +86,12 @@ class Main extends PureComponent {
   }
 
   render() {
+
+          //<button onClick={this.handleAddKeys.bind(this)} >Add ShortKeys</button>
       return (
         <div className="exampleOutput">
         {this.displayAddShortKey()}
         <h2>ShortKeys</h2>
-          <button onClick={this.handleAddKeys.bind(this)} >Add ShortKeys</button>
           <ul>
             {this.displayShortKeys()}
           </ul>
