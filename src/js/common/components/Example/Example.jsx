@@ -57,7 +57,7 @@ class Main extends PureComponent {
 
     switch (this.props.form.currentQuestion) {
       case 1:
-        return <Question1 handleSubmit={this.handleSubmit.bind(this)}/>
+        return <Question26 handleSubmit={this.handleSubmit.bind(this)}/>
       case 2:
         return <Question2 handleSubmit={this.handleSubmit.bind(this)}/>
       case 3:
