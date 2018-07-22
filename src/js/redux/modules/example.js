@@ -22,7 +22,7 @@ export const submitResponse = createAction(SUBMIT_RESPONSE, (form) =>{
 export const nextQuestion= createAction(NEXT_QUESTION, (currentQuestion) =>{
   let reviewForm;
   let nextQuestion = currentQuestion
-  if (currentQuestion < 2) {
+  if (currentQuestion < 26) {
     nextQuestion = nextQuestion + 1;
     reviewForm = false
   } else {
