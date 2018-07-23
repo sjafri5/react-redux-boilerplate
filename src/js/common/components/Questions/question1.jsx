@@ -8,11 +8,10 @@ class Question1 extends PureComponent {
   constructor(props){
     super(props)
     const answers = QuestionMap['1'].answers
-    const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'].slice(0, answers.length)
+    const alphabet = ['1', '2', '3', '4', '5', '6', '7', '8'].slice(0, answers.length)
     this.answerKey = zipObject(alphabet, QuestionMap['1'].answers)
     this.handleKeyDown= this.handleKeyDown.bind(this);
   }
-
 
   handleKeyDown(e){
     if (this.answerKey[e.key]) {
@@ -34,16 +33,16 @@ class Question1 extends PureComponent {
   }
 
   componentWillMount(){
-    window.addEventListener("keydown", this.handleKeyDown, false);
+    window.addEventListener("keypress", this.handleKeyDown, false);
   }
 
   componentWillUnmount(){
-    window.removeEventListener("keydown", this.handleKeyDown, false);
+    window.removeEventListener("keypress", this.handleKeyDown, false);
   }
 
   renderButtons(){
     return map(this.answerKey, (answer, alphabet) => {
-      return <button key={alphabet} value={answer} onClick={this.handleSubmit.bind(this)}>{alphabet + '. ' + answer}</button>
+      return <button type="button" className="btn btn-default btn-block" key={alphabet} value={answer} onClick={this.handleSubmit.bind(this)}>{alphabet + '. ' + answer}</button>
     })
   }
 

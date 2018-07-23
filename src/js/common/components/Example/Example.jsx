@@ -38,7 +38,6 @@ import {
 
 class Main extends PureComponent {
   handleSubmit(e) {
-    console.log('nevercalled', );
     const { form: { currentQuestion  } } = this.props
     e.preventDefault();
     const response = e.target.value;
