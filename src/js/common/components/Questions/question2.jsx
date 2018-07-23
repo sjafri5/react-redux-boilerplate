@@ -1,16 +1,16 @@
 import React, { PureComponent } from 'react';
+import QuestionComponent from './QuestionComponent';
 
-class Question2 extends PureComponent {
+class Question2 extends QuestionComponent {
+  constructor(props){
+    super(props)
+  }
+
   render() {
-    const { handleSubmit } = this.props;
     return (
         <div>
-          <h1>I. MENTAL STATUS ASSESSMENT</h1>
-          <h2>Orientation:</h2>
-          <button value={'Person'} onClick={handleSubmit}>Person</button>
-          <button value={'Situation'} onClick={handleSubmit}>Situation</button>
-          <button value={'Place'} onClick={handleSubmit}>Place</button>
-          <button value={'Time'} onClick={handleSubmit}>Time</button>
+          <h2>{this.props.title}</h2>
+          { this.renderButtons() }
         </div>
         )
   }
