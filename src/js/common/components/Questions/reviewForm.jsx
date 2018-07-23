@@ -15,7 +15,7 @@ class Review extends PureComponent {
   }
 
   transcribeAnswers(questionNumber){
-    return QuestionMap[questionNumber].answers.map((answer) => {
+    return QuestionMap[questionNumber].answers.map((answer, index) => {
       if (questionNumber === '26') {
         return (
           <div>
@@ -26,7 +26,9 @@ class Review extends PureComponent {
       }
 
       const charNumber = answer === this.props.form.formData.get(questionNumber) ? 9632: 9633
-      return <span>{String.fromCharCode(charNumber) + answer}</span>
+      const charcolor= answer === this.props.form.formData.get(questionNumber) ? 'primary' : 'default';
+      const color = "btn btn-" + charcolor
+      return <button key={index} className={color}>{answer}</button>
 
     })
   }
@@ -39,7 +41,8 @@ class Review extends PureComponent {
 
           {this.transcribeQuestions()}
 
-          <button onClick={handleDownload}>Submit</button>
+          <br/>
+          <button className="btn btn-primary btn-block" onClick={handleDownload}>Download Form</button>
         </div>
         )
   }

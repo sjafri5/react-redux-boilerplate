@@ -32,9 +32,10 @@ class Question26 extends PureComponent {
     return (
         <div>
           <h1>PERTINENT NEW HISTORY – CURRENT SIGNS AND SYMPTOMS - FINDINGS:</h1>
-          <textarea rows="10" cols="80" onChange={this.handleChange.bind(this)} value={this.state.text}>
+          <textarea className="form-control" rows="10" cols="80" onChange={this.handleChange.bind(this)} value={this.state.text}>
           </textarea>
-          <button value={this.state.text} onClick={handleSubmit}>Submit</button>
+          <br/>
+          <button className="btn btn-primary btn-block" value={this.state.text} onClick={handleSubmit}>Submit</button>
         </div>
         )
   }

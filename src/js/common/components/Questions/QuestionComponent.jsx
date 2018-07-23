@@ -18,7 +18,7 @@ class QuestionComponent extends PureComponent {
 
   createAnswerKey(questionNumber){
     const answers = QuestionMap[questionNumber].answers
-    const alphabet = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'].slice(0, answers.length)
+    const alphabet = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'].slice(0, answers.length)
     return zipObject(alphabet, answers)
   }
 
