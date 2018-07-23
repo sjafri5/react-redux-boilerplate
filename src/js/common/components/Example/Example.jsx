@@ -38,9 +38,17 @@ import {
 
 class Main extends PureComponent {
   handleSubmit(e) {
+    console.log('nevercalled', );
     const { form: { currentQuestion  } } = this.props
     e.preventDefault();
     const response = e.target.value;
+    this.props.submitResponse({questionNumber: currentQuestion, response})
+    this.props.nextQuestion(currentQuestion)
+  }
+
+  handleSelection(response) {
+    console.log('called', );
+    const { form: { currentQuestion  } } = this.props
     this.props.submitResponse({questionNumber: currentQuestion, response})
     this.props.nextQuestion(currentQuestion)
   }
@@ -57,7 +65,7 @@ class Main extends PureComponent {
 
     switch (this.props.form.currentQuestion) {
       case 1:
-        return <Question1 handleSubmit={this.handleSubmit.bind(this)}/>
+        return <Question1 handleSelection={this.handleSelection.bind(this)}/>
       case 2:
         return <Question2 handleSubmit={this.handleSubmit.bind(this)}/>
       case 3:

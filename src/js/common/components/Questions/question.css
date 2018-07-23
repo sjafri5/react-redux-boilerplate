@@ -1,0 +1,13 @@
+@import "../../../../style/configs/color";
+
+/* Example handler
+ ---------------------- */
+ button {
+    color: red;
+
+ }
+ a.button1:hover{
+    color:#000000;
+    background-color:#FFFFFF;
+
+ }

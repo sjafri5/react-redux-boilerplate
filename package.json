@@ -82,6 +82,7 @@
     "webpack-s3-plugin": "^1.0.0-rc.0"
   },
   "dependencies": {
+    "bootstrap": "^4.1.2",
     "file-system": "^2.2.2",
     "history": "^4.7.2",
     "immutable": "^3.8.2",
