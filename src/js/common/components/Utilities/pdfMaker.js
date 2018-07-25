@@ -26,6 +26,18 @@ class PdfMaker {
     this.doc.text("Date of Service: " + date, 10, 10);
   }
 
+  transcribeSignatureArea(){
+    const date = new Date()
+    const locale = date.toLocaleDateString("en-US");
+    const hours = date.getHours()
+    const minutes = date.getMinutes()
+    this.doc.setFontSize(10)
+    this.doc.text("Provider Print Name/Credentials: Ejaz Jafri", 10, 290);
+    this.doc.text("Signature: __________________________", 80, 290);
+    this.doc.text(`Date/Time: ${locale} - ${hours}:${minutes}`, 150, 290);
+
+  }
+
   transcribeQuestions(){
     const questionCount = Array.from(Array(26)).map((e,i)=>(i+ 1).toString())
     let questionXAxis = 0
@@ -68,6 +80,8 @@ class PdfMaker {
 
       this.yAxis += 15;
     })
+
+    this.transcribeSignatureArea()
   }
 
   transcribeTriplexAnswers(questionNumber, yAxis, qxAxis){
