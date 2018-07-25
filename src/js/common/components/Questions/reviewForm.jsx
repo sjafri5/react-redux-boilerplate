@@ -15,22 +15,37 @@ class Review extends PureComponent {
   }
 
   transcribeAnswers(questionNumber){
-    return QuestionMap[questionNumber].answers.map((answer, index) => {
+    const answers = QuestionMap[questionNumber].answers
+
+    return answers.map((answer, index) => {
+      const formAnswer = this.props.form.formData.get(questionNumber)
       if (questionNumber === '26') {
         return (
           <div>
             <h4>IV. PERTINENT NEW HISTORY - CURRENT SIGNS/SYMPTOMS - FINDINGS</h4>
-            <span>{this.props.form.formData.get(questionNumber)}</span>
+            <span>{formAnswer}</span>
           </div>
         )
       }
 
-      const charNumber = answer === this.props.form.formData.get(questionNumber) ? 9632: 9633
-      const charcolor= answer === this.props.form.formData.get(questionNumber) ? 'primary' : 'default';
-      const color = "btn btn-" + charcolor
-      return <button key={index} className={color}>{answer}</button>
-
+      if (answers.includes(formAnswer)) {
+        const charcolor= answer === formAnswer ? 'primary' : 'default';
+        const color = "btn btn-" + charcolor
+        return <button key={index} className={color}>{answer}</button>
+      } else {
+        return this.transcribeFullAnswer(answer, formAnswer, index);
+      }
     })
+  }
+
+  transcribeFullAnswer(answer, formAnswer, index){
+    if (answer.slice(0, 4) === formAnswer.slice(0, 4)){
+      const color = "btn btn-primary"
+      return <button key={index} className={color}>{formAnswer}</button>
+    } else {
+      const color = "btn btn-default"
+      return <button key={index} className={color}>{answer}</button>
+    }
   }
 
   render() {

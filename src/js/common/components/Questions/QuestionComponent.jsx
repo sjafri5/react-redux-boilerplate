@@ -9,6 +9,10 @@ class QuestionComponent extends PureComponent {
     super(props)
     this.answerKey = this.createAnswerKey(this.props.currentQuestion)
     this.handleKeyDown= this.handleKeyDown.bind(this);
+    this.state = {
+      fullAnswerFlag: false,
+      fullAnswer: ''
+    }
   }
 
   componentWillReceiveProps(nextProps){
@@ -23,7 +27,13 @@ class QuestionComponent extends PureComponent {
   }
 
   handleKeyDown(e){
+    if (this.state.fullAnswerFlag) {
+      return;
+    }
     if (this.answerKey[e.key]) {
+      this.setState({
+        fullAnswerFlag: false 
+      });
       this.handleSelection(this.answerKey[e.key])
     }
   }
@@ -37,8 +47,17 @@ class QuestionComponent extends PureComponent {
     const { handleSelection } = this.props;
     e.preventDefault();
     const response = e.target.value;
-
-    handleSelection(response)
+    if (response === "Other") {
+      this.setState({
+        fullAnswerFlag: true
+      });
+    }
+    else {
+      this.setState({
+        fullAnswerFlag: false 
+      });
+      handleSelection(response)
+    }
   }
 
   componentWillMount(){
@@ -47,6 +66,29 @@ class QuestionComponent extends PureComponent {
 
   componentWillUnmount(){
     window.removeEventListener("keypress", this.handleKeyDown, false);
+  }
+
+  handleChange(e){
+    e.preventDefault();
+    this.setState({
+      fullAnswer: e.target.value
+    })
+  }
+
+  handleFullAnswerSubmit(){
+    const response = "Other: " + this.state.fullAnswer;
+    this.setState({
+      fullAnswerFlag: false 
+    });
+    this.props.handleSelection(response)
+  }
+
+  renderInput(){
+      return <div className="form-group">
+          <h6> Define Other: </h6>
+          <input className="form-control" value={this.state.fullAnswer} onChange={this.handleChange.bind(this)} placeholder="Other" ></input>
+          <button className="btn btn-primary btn-block" onClick={this.handleFullAnswerSubmit.bind(this)}>Submit</button>
+        </div>
   }
 
   renderButtons(){

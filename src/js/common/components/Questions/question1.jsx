@@ -10,6 +10,7 @@ class Question1 extends QuestionComponent {
     return (
         <div>
           <h2>{this.props.title}</h2>
+          { this.state.fullAnswerFlag ? this.renderInput() : null }
           { this.renderButtons() }
         </div>
         )

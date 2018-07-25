@@ -82,9 +82,10 @@ class PdfMaker {
   }
 
   transcribeAnswers(questionNumber, yAxis){
-    //let longAnswer = 0
+    const answers = QuestionMap[questionNumber].answers
+    const formAnswer = this.formData.get(questionNumber)
     let xAxis = 10
-    QuestionMap[questionNumber].answers.map((answer, index) => {
+    answers.map((answer, index) => {
 
       if (QuestionMap[questionNumber].problematic)  {
         this.handleProblematicQuestions(questionNumber, answer, index);
@@ -96,10 +97,15 @@ class PdfMaker {
         return
       }
 
-      const fillStyle = answer === this.formData.get(questionNumber) ? 'F': 'S' 
-      this.doc.rect(xAxis , this.yAxis + 5, 2, 2, fillStyle)
-      this.doc.setFontSize(8)
-      this.doc.text(answer, xAxis + 3, this.yAxis + 7)
+      
+      if (answers.includes(formAnswer)) {
+        const fillStyle = answer === formAnswer ? 'F': 'S' 
+        this.doc.rect(xAxis , this.yAxis + 5, 2, 2, fillStyle)
+        this.doc.setFontSize(8)
+        this.doc.text(answer, xAxis + 3, this.yAxis + 7)
+      } else {
+        this.transcribeFullAnswer(answer, formAnswer, index, xAxis);
+      }
 
       if (answer.length > 15) {
           xAxis += answer.length - 10
@@ -113,6 +119,18 @@ class PdfMaker {
       }
 
     })
+  }
+
+  transcribeFullAnswer(answer, formAnswer, index, xAxis){
+    if (answer.slice(0, 4) === formAnswer.slice(0, 4)){
+      this.doc.rect(xAxis , this.yAxis + 5, 2, 2, 'F')
+      this.doc.setFontSize(8)
+      this.doc.text(formAnswer, xAxis + 3, this.yAxis + 7)
+    } else {
+      this.doc.rect(xAxis , this.yAxis + 5, 2, 2, 'S')
+      this.doc.setFontSize(8)
+      this.doc.text(answer, xAxis + 3, this.yAxis + 7)
+    }
   }
 
   handleLongAnswer(questionNumber, answer, index){
