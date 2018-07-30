@@ -23,7 +23,7 @@ class PdfMaker {
   transcribeDate(){
     const date = new Date().toLocaleDateString("en-US")
     this.doc.setFontSize(12)
-    this.doc.text("Date of Service: " + date, 10, 10);
+    this.doc.text("Date of Service: ________________________", 10, 10);
   }
 
   transcribeSignatureArea(){
@@ -34,7 +34,8 @@ class PdfMaker {
     this.doc.setFontSize(10)
     this.doc.text("Provider Print Name/Credentials: Ejaz Jafri", 10, 290);
     this.doc.text("Signature: __________________________", 80, 290);
-    this.doc.text(`Date/Time: ${locale} - ${hours}:${minutes}`, 150, 290);
+    //this.doc.text(`Date/Time: ${locale} - ${hours}:${minutes}`, 150, 290);
+    this.doc.text(`Date/Time: ____________________`, 150, 290);
 
   }
 
