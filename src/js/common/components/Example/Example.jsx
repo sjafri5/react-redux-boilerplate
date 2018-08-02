@@ -50,6 +50,7 @@ class Main extends PureComponent {
   }
 
   render() {
+    console.log('this.props', this.props);
     const { example } = this.props;
       return (
         <div className="exampleOutput">

@@ -111,6 +111,7 @@ webpackConfig.module.rules = webpackConfig.module.rules.concat({
   ],
 });
 
+
 webpackConfig.plugins = webpackConfig.plugins.concat(htmlPlugins);
 
 webpackConfig.devtool = 'cheap-module-eval-source-map';

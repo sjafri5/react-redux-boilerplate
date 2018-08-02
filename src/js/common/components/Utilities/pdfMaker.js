@@ -6,7 +6,7 @@ class PdfMaker {
     this.questionMap = QuestionMap;
     this.formData = formData;
     this.doc = new jsPDF()
-    this.yAxis = 20;
+    this.yAxis = 35;
 
     this.buildDocument();
   }
@@ -15,15 +15,31 @@ class PdfMaker {
     const date = Date.now()
     this.doc.setFont('Times')
 
-    this.transcribeDate()
-    this.transcribeQuestions()
+    this.transcribeHeader();
+    this.transcribeDate();
+    this.transcribeQuestions();
     this.doc.save(date + '.pdf');
   }
 
+  transcribeHeader(){
+    this.doc.setFontSize(13)
+    this.doc.text(["CHICAGO BEHAVIORAL HOSPITAL"], 10, 15);
+    this.doc.text(["CHICAGO BEHAVIORAL HOSPITAL"], 10, 15);
+    this.doc.text("|", 105, 0);
+    this.doc.text("|", 105, 4);
+    this.doc.text("|", 105, 8);
+    this.doc.text("|", 105, 12);
+    this.doc.text("|", 105, 16);
+    this.doc.text("|", 105, 20);
+    this.doc.text("|", 105, 24);
+    this.doc.text("PSYCHIATRIC PROGRESS NOTE", 12, 20);
+    this.doc.text("PATIENT LABEL", 140, 15);
+    this.doc.text("________________________________________________________________________________________________________________________________", 0, 24);
+  }
+
   transcribeDate(){
-    const date = new Date().toLocaleDateString("en-US")
     this.doc.setFontSize(12)
-    this.doc.text("Date of Service: ________________________", 10, 10);
+    this.doc.text("Date of Service: __________________________", 10, 30);
   }
 
   transcribeSignatureArea(){
@@ -32,11 +48,9 @@ class PdfMaker {
     const hours = date.getHours()
     const minutes = date.getMinutes()
     this.doc.setFontSize(10)
-    this.doc.text("Provider Print Name/Credentials: Ejaz Jafri", 10, 290);
-    this.doc.text("Signature: __________________________", 80, 290);
-    //this.doc.text(`Date/Time: ${locale} - ${hours}:${minutes}`, 150, 290);
-    this.doc.text(`Date/Time: ____________________`, 150, 290);
-
+    this.doc.text("Provider Print Name/Credentials: Ejaz Jafri ANP", 9, 290);
+    this.doc.text("Signature: __________________________", 85, 290);
+    this.doc.text(`Date/Time: _____________________`, 150, 290);
   }
 
   transcribeQuestions(){
@@ -77,9 +91,16 @@ class PdfMaker {
       }
 
       this.doc.text(this.questionMap[questionNumber].question, 10 , this.yAxis);
-      this.transcribeAnswers(questionNumber, this.yAxis)
+      this.transcribeAnswers(questionNumber)
 
-      this.yAxis += 15;
+        // if questionCount + 5 ||
+        const singleLineQuestions = ['3', '11']
+        if(singleLineQuestions.includes(questionNumber)) {
+          this.yAxis += 10;
+        }
+        else {
+          this.yAxis += 15;
+        }
     })
 
     this.transcribeSignatureArea()
@@ -96,7 +117,7 @@ class PdfMaker {
     })
   }
 
-  transcribeAnswers(questionNumber, yAxis){
+  transcribeAnswers(questionNumber){
     const answers = QuestionMap[questionNumber].answers
     const formAnswer = this.formData.get(questionNumber)
     let xAxis = 10
