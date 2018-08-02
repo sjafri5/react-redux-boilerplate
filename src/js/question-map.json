@@ -16,6 +16,7 @@
     ]
   },
   "2": {
+    "multiselect": "true",
     "question": "Orientation:",
     "answers": [
       "Person",
@@ -25,6 +26,7 @@
     ]
   },
   "3": {
+    "multiselect": "true",
     "question": "Appearance",
     "answers": [
       "Neat & Clean",
@@ -36,6 +38,7 @@
     ]
   },
   "4": {
+    "multiselect": "true",
     "question": "Behavior",
     "answers": [
       "Cooperative",
@@ -54,6 +57,7 @@
     ]
   },
   "5": {
+    "multiselect": "true",
     "question": "Speech",
     "answers": [
       "Normal Rate",
@@ -100,6 +104,7 @@
     ]
   },
   "9": {
+    "multiselect": "true",
     "question": "Mood:",
     "answers": [
       "Neutral",
@@ -115,6 +120,7 @@
     ]
   },
   "10": {
+    "multiselect": "true",
     "question": "Affect:",
     "answers": [
       "Appropriate",
@@ -131,6 +137,7 @@
     ]
   },
   "11": {
+    "multiselect": "true",
     "question": "Attention/Concentration:",
     "answers": [
       "Intact",
@@ -166,6 +173,7 @@
     ]
   },
   "15": {
+    "multiselect": "true",
     "question": "Thought Process:",
     "answers": [
       "Logical",
@@ -183,6 +191,7 @@
     ]
   },
   "16": {
+    "multiselect": "true",
     "question": "Thought Content:",
     "answers": [
       "Denies Hallucinations",
@@ -196,6 +205,7 @@
     ]
   },
   "17": {
+    "multiselect": "true",
     "question": "Risk of Harm to Self:",
     "answers": [
       "Patient denies thought, plan or ideation to harm self",
@@ -206,6 +216,7 @@
     "problematic": "true"
   },
   "18": {
+    "multiselect": "true",
     "question": "Risk of Harm to Others:",
     "answers": [
       "Patient denies thought, plan or ideation to harm others",
@@ -216,6 +227,7 @@
     "problematic": "true"
   },
   "19": {
+    "multiselect": "true",
     "question": "Behavioral:",
     "answers": [
       "Improving",
@@ -251,6 +263,7 @@
     ]
   },
   "22": {
+    "multiselect": "true",
     "question": "Barriers to Discharge:",
     "answers": [
       "Discharge Planning",
@@ -264,6 +277,7 @@
     ]
   },
   "23": {
+    "multiselect": "true",
     "question": "Justification for continued stay:",
     "answers": [
       "Continued danger to self and/or others",

@@ -8,12 +8,18 @@ import './Example.css';
 import { 
   Question1, 
   Question26, 
+  MultiSelect, 
   PatientName,
   Review 
 } from '../Questions';
 
 
 class Main extends PureComponent {
+  constructor(props){
+    super(props);
+    this.props.updateShortKeys()
+  }
+
   handleSubmit(e) {
     const { form: { currentQuestion  } } = this.props
     e.preventDefault();
@@ -42,7 +48,15 @@ class Main extends PureComponent {
       return <PatientName handleSubmit={this.handleSubmit.bind(this)}/>
     } else if (currentQuestion === 26) {
       return <Question26 handleSubmit={this.handleSubmit.bind(this)}/>
-    } else {
+    } else if (QuestionMap[currentQuestion].multiselect) {
+      console.log('-MULTISELECT--------', title);
+
+      return <MultiSelect
+              currentQuestion={currentQuestion}
+              title={title}
+              handleSelection={this.handleSelection.bind(this)} />
+    }
+    else {
       return <Question1 
               currentQuestion={currentQuestion}
               title={title}
