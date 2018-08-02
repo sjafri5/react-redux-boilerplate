@@ -21,7 +21,7 @@ class Main extends PureComponent {
   }
   componentDidMount(){
   const db = firebase.database().ref('shortKeys/')
-  let _this = this;
+  const _this = this;
 
   db.once('value', function(snapshot) {
     let shortKeys = snapshot.val();

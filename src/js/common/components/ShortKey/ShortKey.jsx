@@ -12,18 +12,6 @@ class Main extends PureComponent {
       addShortKey: false,
       text: ''
     }
-    //this.database = firebase.database();
-    //firebase.database().ref('shortKeys/' + 2).set({
-      //phrase: 'this is the second entry' 
-    //});
-
-    //var keys = this.database.ref('shortKeys/')
-    //keys.on('value', function(snapshot) {
-      //let shortKeys = snapshot.val();
-
-      //remove(shortKeys, n => !n );
-      //console.log('shortkeys', shortKeys[1] );
-    //});
   }
 
   handleAddKeys(){
@@ -41,11 +29,20 @@ class Main extends PureComponent {
   }
 
   handleSubmitKeyChange(){
+    const _this = this;
     const index = this.props.form.shortKeys.size + 1
 
     firebase.database().ref('shortKeys/' + index).set({
       phrase: this.state.text
     });
+
+
+    firebase.database().ref('shortKeys/').once('value', function(snapshot) {
+      let shortKeys = snapshot.val();
+      remove(shortKeys, n => !n );
+      _this.props.updateShortKeys(shortKeys)
+      return shortKeys
+    })
 
     this.setState({
       addShortKey: false
