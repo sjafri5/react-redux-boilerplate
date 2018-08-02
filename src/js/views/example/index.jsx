@@ -5,7 +5,9 @@ import Loadable from 'react-loadable';
 
 import LazyLoading from '../../common/components/LazyLoading/LazyLoading'
 import { actions as formActions } from '../../redux/modules/example';
+import { actions as analyticsActions } from '../../redux/modules/analytics';
 import { formResponseSelector } from '../../redux/selectors/exampleSelector';
+import { analyticsSelector } from '../../redux/selectors/analyticsSelector';
 import { ExampleWithError } from '../../common/components/Example';
 import { ErrorBoundary } from '../../common/components/Utilities';
 
@@ -18,10 +20,12 @@ const Main = Loadable({
 
 const mapStateToProps = state => ({
   form: formResponseSelector(state),
+  analytics: analyticsSelector(state),
 });
 
 const mapDispatchToProps = {
   ...formActions,
+  ...analyticsActions
 };
 
 @connect(mapStateToProps, mapDispatchToProps)

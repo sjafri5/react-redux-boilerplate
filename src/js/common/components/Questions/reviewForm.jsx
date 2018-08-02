@@ -54,6 +54,7 @@ class Review extends PureComponent {
 
 
   transcribeFullAnswer(answer, formAnswer, index){
+
     if (answer.slice(0, 4) === formAnswer.slice(0, 4)){
       const color = "btn btn-primary"
       return <button key={index} className={color}>{formAnswer}</button>

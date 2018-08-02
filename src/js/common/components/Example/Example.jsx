@@ -19,6 +19,7 @@ class Main extends PureComponent {
   constructor(props){
     super(props);
   }
+
   componentDidMount(){
   const db = firebase.database().ref('shortKeys/')
   const _this = this;
@@ -40,10 +41,11 @@ class Main extends PureComponent {
     this.props.nextQuestion(currentQuestion)
   }
 
-  handleNameSubmit(patientName) {
+  handleNameSubmit(response) {
     const { form: { currentQuestion  } } = this.props
-    this.props.submitResponse({questionNumber: currentQuestion, patientName})
+    this.props.submitResponse({questionNumber: currentQuestion, response })
     this.props.nextQuestion(currentQuestion)
+    this.props.setStart()
   }
 
   handleSelection(response) {
@@ -53,11 +55,16 @@ class Main extends PureComponent {
   }
 
   handleDownload(){
+    const timestamp = Date.now();
+    firebase.database().ref('analytics/' + this.props.analytics.uuid).update({
+      endTime: timestamp
+    });
+    
     const pdfMaker = new PdfMaker(this.props.form.formData);
   }
 
   questionComponent() {
-    const { form: { currentQuestion, shortKeys } } = this.props
+    const { form: { currentQuestion, shortKeys }, analytics: { uuid } } = this.props
     const title = QuestionMap[currentQuestion].question
 
     if (this.props.form.reviewForm) {
@@ -65,7 +72,7 @@ class Main extends PureComponent {
     } else if (currentQuestion === 0) {
       return <PatientName handleSubmit={this.handleSubmit.bind(this)} handleNameEnter={this.handleNameSubmit.bind(this)}/>
     } else if (currentQuestion === 26) {
-      return <Question26 shortKeys={shortKeys} handleSubmit={this.handleSubmit.bind(this)}/>
+      return <Question26 shortKeys={shortKeys} uuid={uuid} handleSubmit={this.handleSubmit.bind(this)}/>
     } else if (QuestionMap[currentQuestion].multiselect) {
 
       return <MultiSelect

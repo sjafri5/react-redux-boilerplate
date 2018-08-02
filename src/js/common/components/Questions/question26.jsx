@@ -6,7 +6,8 @@ class Question26 extends PureComponent {
     super(props);
     this.commonPhrases = CommonPhrases;
     this.state = {
-      text: ''
+      text: '',
+      shortKeysUsed: new Set()
     }
   }
 
@@ -16,19 +17,38 @@ class Question26 extends PureComponent {
     const shortKeys = this.props.shortKeys
 
     const shortKeyMatch = input.match(/:\d{1,4}\s/)
-      console.log('thipasdfasdf', this.props);
 
     if (shortKeyMatch){
       const shortKey = shortKeyMatch[0];
       const keyNum = shortKey.slice(1, -1).toString();
       if (shortKeys.get(keyNum)) {
-        input = input.replace(/:\d{1,4}\s/, shortKeys.get(keyNum).get('phrase'))
+
+        input = input.replace(/:\d{1,4}\s/, shortKeys.get(keyNum).get('phrase'));
+        this.setAnalytics(keyNum)
+
+        let shortKeysUsed = this.state.shortKeysUsed
+        shortKeysUsed.add(keyNum);
       }
     }
     this.setState({
       text: input
     })
   }
+
+  setAnalytics(){
+    firebase.database().ref('analytics/' + this.props.uuid).update({
+      shortKeysUsed: this.state.shortKeysUsed
+    });
+  }
+
+  handleSubmit(e){
+    const { handleSubmit } = this.props;
+    this.setAnalytics()
+
+    handleSubmit(e)
+  }
+
+
 
   render() {
     const { handleSubmit } = this.props;
@@ -42,7 +62,7 @@ class Question26 extends PureComponent {
           <textarea className="form-control" rows="10" cols="80" onChange={this.handleChange.bind(this)} value={this.state.text}>
           </textarea>
           <br/>
-          <button className="btn btn-primary btn-block" value={this.state.text} onClick={handleSubmit}>Submit</button>
+          <button className="btn btn-primary btn-block" value={this.state.text} onClick={this.handleSubmit.bind(this)}>Submit</button>
         </div>
         )
   }
