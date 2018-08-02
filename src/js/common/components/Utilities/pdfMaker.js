@@ -137,15 +137,12 @@ class PdfMaker {
         return
       }
 
-      
-      if (answers.includes(formAnswer)) {
-        const fillStyle = answer === formAnswer ? 'F': 'S' 
-        this.doc.rect(xAxis , this.yAxis + 5, 2, 2, fillStyle)
-        this.doc.setFontSize(8)
-        this.doc.text(answer, xAxis + 3, this.yAxis + 7)
+      if (QuestionMap[questionNumber].multiselect) {
+        this.transcribeMultiSelectAnswers(answers, answer, formAnswer, xAxis, index)
       } else {
-        this.transcribeFullAnswer(answer, formAnswer, index, xAxis);
+        this.transcribeSingleSelectAnswers(answers, answer, formAnswer, xAxis, index)
       }
+      
 
       if (answer.length > 15) {
           xAxis += answer.length - 10
@@ -159,6 +156,23 @@ class PdfMaker {
       }
 
     })
+  }
+  transcribeMultiSelectAnswers(answers, answer, formAnswer, xAxis, index) {
+      const fillStyle = formAnswer.has(answer) ? 'F': 'S' 
+      this.doc.rect(xAxis , this.yAxis + 5, 2, 2, fillStyle)
+      this.doc.setFontSize(8)
+      this.doc.text(answer, xAxis + 3, this.yAxis + 7)
+  }
+
+  transcribeSingleSelectAnswers(answers, answer, formAnswer, xAxis, index) {
+    if (answers.includes(formAnswer)) {
+      const fillStyle = answer === formAnswer ? 'F': 'S' 
+      this.doc.rect(xAxis , this.yAxis + 5, 2, 2, fillStyle)
+      this.doc.setFontSize(8)
+      this.doc.text(answer, xAxis + 3, this.yAxis + 7)
+    } else {
+      this.transcribeFullAnswer(answer, formAnswer, index, xAxis);
+    }
   }
 
   transcribeFullAnswer(answer, formAnswer, index, xAxis){
@@ -174,8 +188,17 @@ class PdfMaker {
   }
 
   handleLongAnswer(questionNumber, answer, index){
+    // !!! make sure fill is dependent on multiselect or not
       let xAxis = 10
-      const fillStyle = answer === this.formData.get(questionNumber) ? 'F': 'S' 
+      let fillStyle;
+      const multiSelect = QuestionMap[questionNumber].multiselect
+
+      if (multiSelect) {
+        fillStyle = this.formData.get(questionNumber).has(answer) ? 'F': 'S' 
+      } else {
+        fillStyle = answer === this.formData.get(questionNumber) ? 'F': 'S' 
+      }
+
       const firstHalf = answer.substring(0, 70)
       const secondHalf = answer.substring(71)
       const answerArr = [firstHalf, secondHalf]

@@ -22,7 +22,6 @@ class Review extends PureComponent {
       if (questionNumber === '26') {
         return this.transcribeQuestion26(formAnswer)
       } else if (QuestionMap[questionNumber].multiselect) {
-        console.log('formAnswer', formAnswer);
 
         if (formAnswer.has(answer)) {
           return <button key={index} className='btn btn-primary'>{answer}</button>
