@@ -12,13 +12,15 @@ class PdfMaker {
   }
 
   buildDocument(){
-    const date = Date.now()
+    const patientName = this.formData.get('0')
+    const date = new Date()
+    const locale = date.toLocaleDateString("en-US");
     this.doc.setFont('Times')
 
     this.transcribeHeader();
     this.transcribeDate();
     this.transcribeQuestions();
-    this.doc.save(date + '.pdf');
+    this.doc.save(`${patientName}-${locale}.pdf`);
   }
 
   transcribeHeader(){
