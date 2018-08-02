@@ -15,6 +15,7 @@ const formDataSelector = createSelector(
 
 export const formResponseSelector = state => ({
   reviewForm: formDataSelector(state).get('reviewForm'),
+  shortKeys: formDataSelector(state).get('shortKeys'),
   formData: formDataSelector(state).get('formResponse'),
   currentQuestion: formDataSelector(state).get('currentQuestion')
 });

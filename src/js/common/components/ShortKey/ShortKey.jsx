@@ -41,8 +41,11 @@ class Main extends PureComponent {
   }
 
   handleSubmitKeyChange(){
-    const nextKeyNum = Object.keys(CommonPhrases).length + 1;
-    CommonPhrases[nextKeyNum] = this.state.text;
+    const index = this.props.form.shortKeys.size + 1
+
+    firebase.database().ref('shortKeys/' + index).set({
+      phrase: this.state.text
+    });
 
     this.setState({
       addShortKey: false
@@ -64,32 +67,17 @@ class Main extends PureComponent {
   }
 
   displayShortKeys(){
-    this.firebase
-    //console.log('keys', keys);
-    //file.readFile('../../../common-phrases.json', 'utf8', function readFileCallback(err, data){
-      //if (err){
-        //console.log(err);
-      //} else {
-        //obj = JSON.parse(data); //now it an object
-        //console.log('orazP homsilie', data);
-        //obj.table.push({id: 2, square:3}); //add some data
-        //json = JSON.stringify(obj); //convert it back to json
-        //fs.writeFile('myjsonfile.json', json, 'utf8', callback); // write it back 
 
-      //}
-    //});
-
-    return map(CommonPhrases, function(phrase, keyNum){
+    return map(this.props.form.shortKeys.toArray(), function(shortKeyObj, keyNum){
       return (
         <li key={keyNum} >
-         {keyNum + ': ' + phrase}
+         {keyNum + ': ' + shortKeyObj.get('phrase')}
         </li>
       )
     })
   }
 
   render() {
-
       return (
         <div className="exampleOutput">
         {this.displayAddShortKey()}

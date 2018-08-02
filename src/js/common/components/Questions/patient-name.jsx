@@ -5,7 +5,6 @@ class PatientName extends PureComponent {
   constructor(props){
     super(props);
     this.commonPhrases = CommonPhrases;
-    //this.handleKeyDown= this.handleKeyDown.bind(this);
     this.state = {
       text: ''
     }

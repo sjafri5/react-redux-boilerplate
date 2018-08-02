@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 
 import QuestionMap from '../../../question-map.json';
 import PdfMaker from '../Utilities/pdfMaker';
+import remove from 'lodash/remove';
 import './Example.css';
 import './Example.css';
 
@@ -17,7 +18,18 @@ import {
 class Main extends PureComponent {
   constructor(props){
     super(props);
-    this.props.updateShortKeys()
+  }
+  componentDidMount(){
+  const db = firebase.database().ref('shortKeys/')
+  let _this = this;
+
+  db.once('value', function(snapshot) {
+    let shortKeys = snapshot.val();
+    remove(shortKeys, n => !n );
+    _this.props.updateShortKeys(shortKeys)
+    return shortKeys
+  })
+
   }
 
   handleSubmit(e) {

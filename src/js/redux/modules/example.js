@@ -1,5 +1,5 @@
 import { createAction, handleActions } from 'redux-actions';
-import { Map } from 'immutable';
+import { Map, List } from 'immutable';
 import remove from 'lodash/remove';
 
 import type { exampleType } from '../../common/types/example'
@@ -37,19 +37,16 @@ export const nextQuestion= createAction(NEXT_QUESTION, (currentQuestion) =>{
   }
 });
 
-export const updateShortKeys= createAction(UPDATE_SHORT_KEYS, () =>{
-  const db = firebase.database().ref('shortKeys/')
-
-  return db.once('value', function(snapshot) {
-    let shortKeys = snapshot.val();
-    remove(shortKeys, n => !n );
-    return shortKeys
-  })
+export const updateShortKeys= createAction(UPDATE_SHORT_KEYS, (shortKeys) =>{
+  return  {
+    shortKeys
+  }
 });
 
 
 export const actions = {
   submitResponse,
+  updateShortKeys,
   nextQuestion
 };
 
@@ -57,6 +54,12 @@ export const reducers = {
   [SUBMIT_RESPONSE]: (state, { payload }) => {
     const sip= state.get('formResponse').merge(payload.formResponse)
     return state.set('formResponse', sip)
+  },
+  [UPDATE_SHORT_KEYS]: (state, { payload }) => {
+    console.log('payload', payload);
+    return state.merge({
+      ...payload,
+    })
   },
   [NEXT_QUESTION]: (state, { payload }) => {
     return state.merge({
@@ -71,7 +74,7 @@ export const initialState = () =>
   Map({
     reviewForm: false,
     currentQuestion: 0,
-    shortKeys: {},
+    shortKeys: new List(),
     formResponse: new Map(),
   })
 
