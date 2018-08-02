@@ -1,9 +1,6 @@
 import React, { PureComponent } from 'react';
 import map from 'lodash/map';
 import remove from 'lodash/remove';
-//var firebase = require("firebase/app");
-//import fs from 'fs';
-//const fs = require('fs');
 
 var FileSaver = require('file-saver');
 import CommonPhrases from '../../../common-phrases.json';

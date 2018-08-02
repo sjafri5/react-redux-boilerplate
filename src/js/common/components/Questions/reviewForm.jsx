@@ -5,9 +5,7 @@ import each from 'lodash/each'
 class Review extends PureComponent {
   transcribeQuestions(){
     const questionCount = Array.from(Array(26)).map((e,i)=>(i+ 1).toString())
-      console.log('questionQount', questionCount);
     return questionCount.map((QuestionNumber) => {
-      console.log('num---------', QuestionNumber);
       return <div>
         <h4>{QuestionMap[QuestionNumber].question}</h4>
         {this.transcribeAnswers(QuestionNumber)}
