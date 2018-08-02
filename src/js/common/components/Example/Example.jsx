@@ -8,6 +8,7 @@ import './Example.css';
 import { 
   Question1, 
   Question26, 
+  PatientName,
   Review 
 } from '../Questions';
 
@@ -37,6 +38,8 @@ class Main extends PureComponent {
 
     if (this.props.form.reviewForm) {
       return <Review form={this.props.form} handleDownload={this.handleDownload.bind(this)}/>
+    } else if (currentQuestion === 0) {
+      return <PatientName handleSubmit={this.handleSubmit.bind(this)}/>
     } else if (currentQuestion === 26) {
       return <Question26 handleSubmit={this.handleSubmit.bind(this)}/>
     } else {

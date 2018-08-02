@@ -6,7 +6,7 @@ class PdfMaker {
     this.questionMap = QuestionMap;
     this.formData = formData;
     this.doc = new jsPDF()
-    this.yAxis = 35;
+    this.yAxis = 36;
 
     this.buildDocument();
   }
@@ -22,6 +22,8 @@ class PdfMaker {
   }
 
   transcribeHeader(){
+    const patientName = this.formData.get('0')
+
     this.doc.setFontSize(13)
     this.doc.text(["CHICAGO BEHAVIORAL HOSPITAL"], 10, 15);
     this.doc.text(["CHICAGO BEHAVIORAL HOSPITAL"], 10, 15);
@@ -33,7 +35,7 @@ class PdfMaker {
     this.doc.text("|", 105, 20);
     this.doc.text("|", 105, 24);
     this.doc.text("PSYCHIATRIC PROGRESS NOTE", 12, 20);
-    this.doc.text("PATIENT LABEL", 140, 15);
+    this.doc.text(`PATIENT: (${patientName})`, 140, 15);
     this.doc.text("________________________________________________________________________________________________________________________________", 0, 24);
   }
 

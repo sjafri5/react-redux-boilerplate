@@ -70,7 +70,7 @@ export const reducers = {
 export const initialState = () =>
   Map({
     reviewForm: false,
-    currentQuestion: 1,
+    currentQuestion: 0,
     shortKeys: {},
     formResponse: new Map(),
   })

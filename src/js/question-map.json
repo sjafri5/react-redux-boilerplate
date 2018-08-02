@@ -1,4 +1,8 @@
 {
+  "0": {
+    "question": "Patient Name:",
+    "answers": []
+  },
   "1": {
     "question": "Coordination of care provided with:",
     "answers": [
@@ -290,8 +294,6 @@
   "26": {
     "question": "",
     "problematic": "true",
-    "answers": [
-      "no answer"
-    ]
+    "answers": ["other"]
   }
 }
