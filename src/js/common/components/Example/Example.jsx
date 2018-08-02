@@ -28,6 +28,12 @@ class Main extends PureComponent {
     this.props.nextQuestion(currentQuestion)
   }
 
+  handleNameSubmit(patientName) {
+    const { form: { currentQuestion  } } = this.props
+    this.props.submitResponse({questionNumber: currentQuestion, patientName})
+    this.props.nextQuestion(currentQuestion)
+  }
+
   handleSelection(response) {
     const { form: { currentQuestion  } } = this.props
     this.props.submitResponse({questionNumber: currentQuestion, response})
@@ -45,7 +51,7 @@ class Main extends PureComponent {
     if (this.props.form.reviewForm) {
       return <Review form={this.props.form} handleDownload={this.handleDownload.bind(this)}/>
     } else if (currentQuestion === 0) {
-      return <PatientName handleSubmit={this.handleSubmit.bind(this)}/>
+      return <PatientName handleSubmit={this.handleSubmit.bind(this)} handleNameEnter={this.handleNameSubmit.bind(this)}/>
     } else if (currentQuestion === 26) {
       return <Question26 handleSubmit={this.handleSubmit.bind(this)}/>
     } else if (QuestionMap[currentQuestion].multiselect) {
