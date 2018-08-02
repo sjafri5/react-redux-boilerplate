@@ -56,7 +56,6 @@ export const reducers = {
     return state.set('formResponse', sip)
   },
   [UPDATE_SHORT_KEYS]: (state, { payload }) => {
-    console.log('payload', payload);
     return state.merge({
       ...payload,
     })

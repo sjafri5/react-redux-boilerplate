@@ -57,7 +57,7 @@ class Main extends PureComponent {
   }
 
   questionComponent() {
-    const { form: { currentQuestion  } } = this.props
+    const { form: { currentQuestion, shortKeys } } = this.props
     const title = QuestionMap[currentQuestion].question
 
     if (this.props.form.reviewForm) {
@@ -65,7 +65,7 @@ class Main extends PureComponent {
     } else if (currentQuestion === 0) {
       return <PatientName handleSubmit={this.handleSubmit.bind(this)} handleNameEnter={this.handleNameSubmit.bind(this)}/>
     } else if (currentQuestion === 26) {
-      return <Question26 handleSubmit={this.handleSubmit.bind(this)}/>
+      return <Question26 shortKeys={shortKeys} handleSubmit={this.handleSubmit.bind(this)}/>
     } else if (QuestionMap[currentQuestion].multiselect) {
 
       return <MultiSelect
