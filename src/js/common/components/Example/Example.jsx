@@ -49,7 +49,6 @@ class Main extends PureComponent {
     } else if (currentQuestion === 26) {
       return <Question26 handleSubmit={this.handleSubmit.bind(this)}/>
     } else if (QuestionMap[currentQuestion].multiselect) {
-      console.log('-MULTISELECT--------', title);
 
       return <MultiSelect
               currentQuestion={currentQuestion}

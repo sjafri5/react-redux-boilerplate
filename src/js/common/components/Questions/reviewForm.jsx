@@ -20,13 +20,18 @@ class Review extends PureComponent {
     return answers.map((answer, index) => {
       const formAnswer = this.props.form.formData.get(questionNumber)
       if (questionNumber === '26') {
-        return (
-          <div>
-            <h4>IV. PERTINENT NEW HISTORY - CURRENT SIGNS/SYMPTOMS - FINDINGS</h4>
-            <span>{formAnswer}</span>
-          </div>
-        )
+        return this.transcribeQuestion26(formAnswer)
+      } else if (QuestionMap[questionNumber].multiselect) {
+        console.log('formAnswer', formAnswer);
+
+        if (formAnswer.has(answer)) {
+          return <button key={index} className='btn btn-primary'>{answer}</button>
+        } else {
+          const color = "btn btn-default"
+          return <button key={index} className={color}>{answer}</button>
+        }
       }
+
 
       if (answers.includes(formAnswer)) {
         const charcolor= answer === formAnswer ? 'primary' : 'default';
@@ -37,6 +42,17 @@ class Review extends PureComponent {
       }
     })
   }
+
+  transcribeQuestion26(formAnswer){
+    return (
+      <div>
+        <h4>IV. PERTINENT NEW HISTORY - CURRENT SIGNS/SYMPTOMS - FINDINGS</h4>
+        <span>{formAnswer}</span>
+      </div>
+    )
+  }
+
+
 
   transcribeFullAnswer(answer, formAnswer, index){
     if (answer.slice(0, 4) === formAnswer.slice(0, 4)){
