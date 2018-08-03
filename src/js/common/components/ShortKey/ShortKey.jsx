@@ -52,10 +52,14 @@ class Main extends PureComponent {
   displayAddShortKey(){
     if(this.state.addShortKey) {
       return (
-          <div>
-          <textarea rows="10" cols="80" onChange={this.handleChange.bind(this)} value={this.state.text}>
-          </textarea>
-          <button value={'Submit'} onClick={this.handleSubmitKeyChange.bind(this)}>Submit</button>
+          <div className="form-group" >
+            <textarea className="form-control" rows="10" cols="80" onChange={this.handleChange.bind(this)} value={this.state.text}>
+            </textarea>
+            <br/>
+            <button className="btn btn-primary btn-block" value={'Submit'} onClick={this.handleSubmitKeyChange.bind(this)}>Submit</button>
+            <br/>
+            <br/>
+
           </div>
           );
     }
@@ -67,7 +71,7 @@ class Main extends PureComponent {
 
     return map(this.props.form.shortKeys.toArray(), function(shortKeyObj, keyNum){
       return (
-        <li key={keyNum} >
+        <li key={keyNum} className="list-group-item">
          {keyNum + ': ' + shortKeyObj.get('phrase')}
         </li>
       )
@@ -75,14 +79,17 @@ class Main extends PureComponent {
   }
 
   render() {
+    const disabled = this.state.addShortKey ? 'disabled' : '';
+
       return (
         <div className="exampleOutput">
-        {this.displayAddShortKey()}
-        <h2>ShortKeys</h2>
-        <button onClick={this.handleAddKeys.bind(this)} >Add ShortKeys</button>
-          <ul>
+          {this.displayAddShortKey()}
+          <h2>ShortKeys</h2>
+          <ul className="list-group">
             {this.displayShortKeys()}
           </ul>
+          <br/>
+          <button className={"btn btn-primary btn-block " + disabled} onClick={this.handleAddKeys.bind(this)} >Add ShortKeys</button>
         </div>
       );
   }

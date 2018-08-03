@@ -11,15 +11,16 @@ class PatientName extends PureComponent {
   }
 
   handleChange(e){
+    this.setState({
+      text: e.target.value
+    })
+  }
+
+  handleKeyPress(e){
     if (e.key === 'Enter') {
       this.props.handleNameEnter(this.state.text);
       return;
     }
-
-    let input = this.state.text + e.key;
-    this.setState({
-      text: input
-    })
   }
 
   handleSubmit(e){
@@ -34,7 +35,7 @@ class PatientName extends PureComponent {
     return (
         <div>
           <h1>Enter Patient Name:</h1>
-          <input className="form-control" onKeyPress={this.handleChange.bind(this)} value={this.state.text} />
+          <input className="form-control" onChange={this.handleChange.bind(this)} onKeyPress={this.handleKeyPress.bind(this)} value={this.state.text} />
           <br/>
           <button className="btn btn-primary btn-block" value={this.state.text} onClick={this.handleSubmit.bind(this)}>Submit</button>
         </div>
