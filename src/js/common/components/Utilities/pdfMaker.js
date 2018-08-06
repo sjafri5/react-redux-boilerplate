@@ -246,7 +246,7 @@ class PdfMaker {
         break;
     }
     
-    const fillStyle = answer === this.formData.get(questionNumber) ? 'F': 'S' 
+    const fillStyle = this.formData.get(questionNumber).has(answer) ? 'F': 'S' 
     this.doc.rect(xAxis, this.yAxis + 5, 2, 2, fillStyle)
     this.doc.setFontSize(8)
     this.doc.text(answer, xAxis + 3, this.yAxis + 7)
