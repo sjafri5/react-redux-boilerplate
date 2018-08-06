@@ -30,23 +30,36 @@ class Main extends PureComponent {
 
   handleSubmitKeyChange(){
     const _this = this;
-    const index = this.props.form.shortKeys.size + 1
+    let index
+    if (this.props.form.shortKeys){
+      index = this.props.form.shortKeys.size + 1
+    } else {
+      index = 1
+    }
 
-    firebase.database().ref('shortKeys/' + index).set({
-      phrase: this.state.text
-    });
+    const db = firebase.database().ref('shortKeys/')
 
+    var newPostKey = firebase.database().ref().child('shortKeys').push().key;
 
-    firebase.database().ref('shortKeys/').once('value', function(snapshot) {
-      let shortKeys = snapshot.val();
-      remove(shortKeys, n => !n );
-      _this.props.updateShortKeys(shortKeys)
-      return shortKeys
+    db.once('value', function(snapshot) {
+      var num = snapshot.numChildren() + 1
+      firebase.database().ref('shortKeys/' + newPostKey).set({
+        keyNum: num,
+        phrase: _this.state.text
+      }).then((resp) => {
+        firebase.database().ref('shortKeys/').once('value', function(snapshot) {
+          let shortKeys = snapshot.val();
+          remove(shortKeys, n => !n );
+          _this.props.updateShortKeys(shortKeys)
+          return shortKeys
+        })
+
+        _this.setState({
+          addShortKey: false,
+          text: ''
+        });
+      })
     })
-
-    this.setState({
-      addShortKey: false
-    });
   }
 
   displayAddShortKey(){
@@ -67,12 +80,31 @@ class Main extends PureComponent {
     return null;
   }
 
-  displayShortKeys(){
+  handleDelete(e, shortKeyObj, primaryKey){
+    e.preventDefault();
+    firebase.database().ref('shortKeys/' + primaryKey).remove();
 
-    return map(this.props.form.shortKeys.toArray(), function(shortKeyObj, keyNum){
+    const db = firebase.database().ref('shortKeys/')
+    const _this = this;
+
+    db.once('value', function(snapshot) {
+      let shortKeys = snapshot.val();
+      remove(shortKeys, n => !n );
+      _this.props.updateShortKeys(shortKeys)
+      return shortKeys
+    })
+  }
+
+  displayShortKeys(){
+    const _this = this
+    if (!this.props.form.shortKeys) {
+      return
+    }
+    return map(this.props.form.shortKeys.toJS(), function(shortKeyObj, primaryKey){
+      console.log('a', shortKeyObj);
       return (
-        <li key={keyNum} className="list-group-item">
-         {keyNum + ': ' + shortKeyObj.get('phrase')}
+        <li key={primaryKey} className="list-group-item">
+         {shortKeyObj.keyNum + ': ' + shortKeyObj.phrase} <a className="btn btn-danger" href="#"  onClick={(e) => _this.handleDelete(e, shortKeyObj, primaryKey)}>Delete</a>
         </li>
       )
     })

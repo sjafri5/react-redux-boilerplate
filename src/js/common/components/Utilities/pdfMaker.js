@@ -225,8 +225,9 @@ class PdfMaker {
     this.doc.text('IV. PERTINENT NEW HISTORY - CURRENT SIGNS/SYMPTOMS - FINDINGS', 10, this.yAxis);
 
     this.doc.setFontSize(8)
-    this.doc.text(this.formData.get(questionNumber), 10, this.yAxis + 7)
-    }
+    const splitAnswer = this.doc.splitTextToSize(this.formData.get(questionNumber), 180);
+    this.doc.text(splitAnswer, 10, this.yAxis + 7)
+  }
 
 
   handle17(questionNumber, answer, index){

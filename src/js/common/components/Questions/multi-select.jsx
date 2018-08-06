@@ -46,7 +46,7 @@ class MultiSelect extends QuestionComponent {
 
   renderButtons(){
     return map(this.answerKey, (answer, alphabet) => {
-      const buttonColor = this.state.selections.has(answer)  ? 'btn-success' : 'btn-default'
+      const buttonColor = this.state.selections.has(answer)  ? 'btn-success' : 'btn-secondary'
 
       return <button type="button" className={"btn btn-block " + buttonColor} key={alphabet} value={answer} ref={answer} onClick={this.handleMultiSelect.bind(this)}>{alphabet + '. ' + answer}</button>
     })
