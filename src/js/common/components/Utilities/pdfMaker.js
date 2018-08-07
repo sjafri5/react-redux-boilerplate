@@ -1,5 +1,6 @@
 import QuestionMap from '../../../question-map.json';
 import jsPDF from 'jspdf'
+import map from 'lodash/map'
 
 class PdfMaker {
   constructor(formData) {
@@ -68,6 +69,17 @@ class PdfMaker {
         this.yAxis += 8
       }
 
+      if(questionNumber === '18'){
+        this.doc.text('Risk of Harm To Self and Others', 10 , this.yAxis);
+        this.transcribeHarmAnswers();
+        this.yAxis += 15;
+        return;
+      }
+
+      if(questionNumber === '19'){
+        return;
+      }
+
       if(questionNumber === '23'){
         this.doc.text('III. TREATMENT PLAN', 10, this.yAxis);
         this.yAxis += 8
@@ -107,6 +119,61 @@ class PdfMaker {
     })
 
     this.transcribeSignatureArea()
+  }
+
+  transcribeHarmAnswers(){
+    const suicideAnswers = QuestionMap['18'].answers
+    const suicideFormAnswer = this.formData.get('18')
+    const homicideAnswers = QuestionMap['19'].answers
+    const homicideFormAnswer = this.formData.get('19')
+
+    map(suicideAnswers, (answer, index) => {
+      let xAxis = 10
+      switch(index) {
+        case 0: 
+          break;
+        case 1: 
+          xAxis += 65
+          break;
+        case 2: 
+          xAxis = 10
+          this.yAxis += 5
+          break;
+        case 3: 
+          xAxis += 65
+          break;
+      }
+      
+      const fillStyle = suicideFormAnswer .has(answer) ? 'F': 'S' 
+      this.doc.rect(xAxis, this.yAxis + 5, 2, 2, fillStyle)
+      this.doc.setFontSize(8)
+      this.doc.text(answer, xAxis + 3, this.yAxis + 7)
+    })
+    this.yAxis -= 5
+
+    map(homicideAnswers, (answer, index) => {
+      let xAxis = 105
+      switch(index) {
+        case 0: 
+          break;
+        case 1: 
+          xAxis += 65
+          break;
+        case 2: 
+          xAxis = 105
+          this.yAxis += 5
+          break;
+        case 3: 
+          xAxis += 65
+          break;
+      }
+      
+      const fillStyle = homicideFormAnswer .has(answer) ? 'F': 'S' 
+      this.doc.rect(xAxis, this.yAxis + 5, 2, 2, fillStyle)
+      this.doc.setFontSize(8)
+      this.doc.text(answer, xAxis + 3, this.yAxis + 7)
+    })
+
   }
 
   transcribeTriplexAnswers(questionNumber, yAxis, qxAxis){
@@ -210,7 +277,7 @@ class PdfMaker {
   handleProblematicQuestions(questionNumber, answer, index){
     switch(questionNumber) {
       case '18': 
-      case '19': 
+      //case '19': 
         this.handleHarmQuestion(questionNumber, answer, index);
         break;
       case '26': 

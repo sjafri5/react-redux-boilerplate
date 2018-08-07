@@ -26,11 +26,6 @@ class Question26 extends PureComponent {
   handleChange(e){
     e.preventDefault();
     let input = e.target.value;
-    //console.log('skeya', sKeys);
-
-
-
-      //console.log('shortKeys', shortKeys);
 
     const shortKeyMatch = input.match(/:\d{1,4}\s/)
 

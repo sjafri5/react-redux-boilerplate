@@ -101,7 +101,6 @@ class Main extends PureComponent {
       return
     }
     return map(this.props.form.shortKeys.toJS(), function(shortKeyObj, primaryKey){
-      console.log('a', shortKeyObj);
       return (
         <li key={primaryKey} className="list-group-item">
          {shortKeyObj.keyNum + ': ' + shortKeyObj.phrase} <a className="btn btn-danger" href="#"  onClick={(e) => _this.handleDelete(e, shortKeyObj, primaryKey)}>Delete</a>

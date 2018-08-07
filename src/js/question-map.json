@@ -219,9 +219,9 @@
     "question": "Risk of Harm to Self:",
     "answers": [
       "Patient denies thought, plan or ideation to harm self",
-      "Passive death wishes",
+      "Suicidal Risk",
       "Patient unable to contract for safety",
-      "Suicidal Risk"
+      "Passive death wishes"
     ],
     "problematic": "true"
   },
@@ -230,9 +230,9 @@
     "question": "Risk of Harm to Others:",
     "answers": [
       "Patient denies thought, plan or ideation to harm others",
+      "Homicidal Risk",
       "Passive thoughts to hurt others",
-      "Inability to care for self",
-      "Homicidal Risk"
+      "Inability to care for self"
     ],
     "problematic": "true"
   },

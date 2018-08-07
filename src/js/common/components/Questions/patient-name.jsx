@@ -26,7 +26,6 @@ class PatientName extends PureComponent {
   handleSubmit(e){
     e.preventDefault();
     const response = e.target.value;
-    console.log('this.state', this.state.text);
     this.props.handleNameEnter(this.state.text);
   }
 

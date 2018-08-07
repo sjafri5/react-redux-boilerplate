@@ -26,7 +26,6 @@ class Main extends PureComponent {
 
   db.once('value', function(snapshot) {
     var num = snapshot.numChildren();
-    console.log('num', num);
     let shortKeys = snapshot.val();
     remove(shortKeys, n => !n );
     _this.props.updateShortKeys(shortKeys)

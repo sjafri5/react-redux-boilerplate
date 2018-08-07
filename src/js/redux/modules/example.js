@@ -37,7 +37,6 @@ export const nextQuestion= createAction(NEXT_QUESTION, (currentQuestion) =>{
 });
 
 export const updateShortKeys= createAction(UPDATE_SHORT_KEYS, (shortKeys) =>{
-  console.log('kkkkk', shortKeys);
   return  {
     shortKeys
   }
