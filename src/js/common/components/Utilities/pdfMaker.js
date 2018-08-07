@@ -194,7 +194,7 @@ class PdfMaker {
     answers.map((answer, index) => {
 
       if (QuestionMap[questionNumber].problematic)  {
-        this.handleProblematicQuestions(questionNumber, answer, index);
+        this.handleEssay(questionNumber, answer, index);
         return;
       }
 
@@ -274,48 +274,12 @@ class PdfMaker {
       this.yAxis += 7
   }
 
-  handleProblematicQuestions(questionNumber, answer, index){
-    switch(questionNumber) {
-      case '18': 
-      //case '19': 
-        this.handleHarmQuestion(questionNumber, answer, index);
-        break;
-      case '26': 
-        this.handle26(questionNumber, answer, index);
-        break;
-    }
-  }
-
-  handle26(questionNumber, answer, index){
+  handleEssay(questionNumber, answer, index){
     this.doc.text('IV. PERTINENT NEW HISTORY - CURRENT SIGNS/SYMPTOMS - FINDINGS', 10, this.yAxis);
 
     this.doc.setFontSize(8)
     const splitAnswer = this.doc.splitTextToSize(this.formData.get(questionNumber), 180);
     this.doc.text(splitAnswer, 10, this.yAxis + 7)
-  }
-
-
-  handleHarmQuestion(questionNumber, answer, index){
-    let xAxis = 10
-    switch(index) {
-      case 0: 
-        break;
-      case 1: 
-        xAxis += 65
-        break;
-      case 2: 
-        xAxis = 10
-        this.yAxis += 5
-        break;
-      case 3: 
-        xAxis += 65
-        break;
-    }
-    
-    const fillStyle = this.formData.get(questionNumber).has(answer) ? 'F': 'S' 
-    this.doc.rect(xAxis, this.yAxis + 5, 2, 2, fillStyle)
-    this.doc.setFontSize(8)
-    this.doc.text(answer, xAxis + 3, this.yAxis + 7)
   }
 }
 
