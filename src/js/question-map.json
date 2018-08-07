@@ -195,8 +195,6 @@
     "multiselect": "true",
     "question": "Thought Content:",
     "answers": [
-      "Denies Hallucinations",
-      "Hallucinations",
       "Appropriate -- Problems Denied",
       "Paranoid",
       "Obsessive",
@@ -207,6 +205,17 @@
   },
   "17": {
     "multiselect": "true",
+    "question": "Hallucinations:",
+    "answers": [
+      "Denies Hallucinations",
+      "Auditory Hallucinations",
+      "Visual Hallucinations",
+      "Tactile Hallucinations",
+      "Olfactory Hallucinations"
+    ]
+  },
+  "18": {
+    "multiselect": "true",
     "question": "Risk of Harm to Self:",
     "answers": [
       "Patient denies thought, plan or ideation to harm self",
@@ -216,7 +225,7 @@
     ],
     "problematic": "true"
   },
-  "18": {
+  "19": {
     "multiselect": "true",
     "question": "Risk of Harm to Others:",
     "answers": [
@@ -227,7 +236,7 @@
     ],
     "problematic": "true"
   },
-  "19": {
+  "20": {
     "multiselect": "true",
     "question": "Behavioral:",
     "answers": [
@@ -240,7 +249,7 @@
       "Other"
     ]
   },
-  "20": {
+  "21": {
     "question": "Overall Response to Medication:",
     "answers": [
       "Poor Response",
@@ -252,7 +261,7 @@
       "Other"
     ]
   },
-  "21": {
+  "22": {
     "question": "Overall Response to Treatment:",
     "answers": [
       "Improving but has not reached maximum benefit from this level of care",
@@ -263,7 +272,7 @@
       "Other"
     ]
   },
-  "22": {
+  "23": {
     "multiselect": "true",
     "question": "Barriers to Discharge:",
     "answers": [
@@ -277,7 +286,7 @@
       "Other"
     ]
   },
-  "23": {
+  "24": {
     "multiselect": "true",
     "question": "Justification for continued stay:",
     "answers": [
@@ -289,14 +298,14 @@
       "Has a general medical condition (other than mental disorder) requiring hospital care and due to psychological aspects, patient cannot be managed as well on non-psychiatric unit."
     ]
   },
-  "24": {
+  "25": {
     "question": "Medication:",
     "answers": [
       "Continue current medication/No change",
       "Change (Specify medication and rationale in narrative)"
     ]
   },
-  "25": {
+  "26": {
     "question": "Therapy/Treatment:",
     "answers": [
       "Continue current treatment plan",
@@ -306,7 +315,7 @@
       "Order ____________________________ medications and titrate dosage in order to:"
     ]
   },
-  "26": {
+  "27": {
     "question": "",
     "problematic": "true",
     "answers": ["other"]

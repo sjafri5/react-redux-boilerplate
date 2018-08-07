@@ -58,7 +58,7 @@ class PdfMaker {
   }
 
   transcribeQuestions(){
-    const questionCount = Array.from(Array(26)).map((e,i)=>(i+ 1).toString())
+    const questionCount = Array.from(Array(27)).map((e,i)=>(i+ 1).toString())
     let questionXAxis = 0
     questionCount.map((questionNumber, index) => {
       this.doc.setFontSize(12)
@@ -73,7 +73,7 @@ class PdfMaker {
         this.yAxis += 8
       }
 
-      if(questionNumber === '19'){
+      if(questionNumber === '20'){
         this.doc.addPage();
         this.yAxis = 20
         this.doc.text('II. ASSESSMENT', 10, this.yAxis);
@@ -97,8 +97,7 @@ class PdfMaker {
       this.doc.text(this.questionMap[questionNumber].question, 10 , this.yAxis);
       this.transcribeAnswers(questionNumber)
 
-        // if questionCount + 5 ||
-        const singleLineQuestions = ['3', '11']
+        const singleLineQuestions = ['3', '11', '16']
         if(singleLineQuestions.includes(questionNumber)) {
           this.yAxis += 10;
         }
@@ -188,7 +187,6 @@ class PdfMaker {
   }
 
   handleLongAnswer(questionNumber, answer, index){
-    // !!! make sure fill is dependent on multiselect or not
       let xAxis = 10
       let fillStyle;
       const multiSelect = QuestionMap[questionNumber].multiselect
@@ -211,9 +209,9 @@ class PdfMaker {
 
   handleProblematicQuestions(questionNumber, answer, index){
     switch(questionNumber) {
-      case '17': 
       case '18': 
-        this.handle17(questionNumber, answer, index);
+      case '19': 
+        this.handleHarmQuestion(questionNumber, answer, index);
         break;
       case '26': 
         this.handle26(questionNumber, answer, index);
@@ -230,20 +228,20 @@ class PdfMaker {
   }
 
 
-  handle17(questionNumber, answer, index){
+  handleHarmQuestion(questionNumber, answer, index){
     let xAxis = 10
     switch(index) {
       case 0: 
         break;
       case 1: 
-        xAxis += 80
+        xAxis += 65
         break;
       case 2: 
         xAxis = 10
         this.yAxis += 5
         break;
       case 3: 
-        xAxis += 80
+        xAxis += 65
         break;
     }
     

@@ -1,29 +1,45 @@
 import React, { PureComponent } from 'react';
+import map from 'lodash/map';
 import CommonPhrases from '../../../common-phrases.json';
 
 class Question26 extends PureComponent {
   constructor(props){
     super(props);
     this.commonPhrases = CommonPhrases;
+    this.shortKeys = this.getShortKeys(this.props.shortKeys)
     this.state = {
       text: '',
       shortKeysUsed: new Set()
     }
   }
 
+  getShortKeys(){
+    const shortKeys = this.props.shortKeys.toJS();
+    const sKeys = {}
+    map(shortKeys, (val, key) => {
+      sKeys[val.keyNum] = val.phrase
+    })
+
+    return sKeys
+  }
+
   handleChange(e){
     e.preventDefault();
     let input = e.target.value;
-    const shortKeys = this.props.shortKeys
+    //console.log('skeya', sKeys);
+
+
+
+      //console.log('shortKeys', shortKeys);
 
     const shortKeyMatch = input.match(/:\d{1,4}\s/)
 
     if (shortKeyMatch){
       const shortKey = shortKeyMatch[0];
       const keyNum = shortKey.slice(1, -1).toString();
-      if (shortKeys.get(keyNum)) {
+      if (this.shortKeys[keyNum]) {
 
-        input = input.replace(/:\d{1,4}\s/, shortKeys.get(keyNum).get('phrase'));
+        input = input.replace(/:\d{1,4}\s/, this.shortKeys[keyNum] + ' ');
         this.setAnalytics(keyNum)
 
         let shortKeysUsed = this.state.shortKeysUsed

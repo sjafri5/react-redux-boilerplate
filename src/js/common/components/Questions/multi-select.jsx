@@ -8,8 +8,6 @@ class MultiSelect extends QuestionComponent {
       this.state = {
         selections: new Set()
       }
-
-    //this.handleKeyDown= () => {}
   }
 
   handleSubmit(e) {

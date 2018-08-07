@@ -4,7 +4,7 @@ import each from 'lodash/each'
 
 class Review extends PureComponent {
   transcribeQuestions(){
-    const questionCount = Array.from(Array(26)).map((e,i)=>(i+ 1).toString())
+    const questionCount = Array.from(Array(27)).map((e,i)=>(i+ 1).toString())
     return questionCount.map((QuestionNumber) => {
       return <div>
         <h4>{QuestionMap[QuestionNumber].question}</h4>
@@ -19,8 +19,8 @@ class Review extends PureComponent {
 
     return answers.map((answer, index) => {
       const formAnswer = this.props.form.formData.get(questionNumber)
-      if (questionNumber === '26') {
-        return this.transcribeQuestion26(formAnswer)
+      if (questionNumber === '27') {
+        return this.transcribeEssay(formAnswer)
       } else if (QuestionMap[questionNumber].multiselect) {
 
         if (formAnswer.has(answer)) {
@@ -42,7 +42,7 @@ class Review extends PureComponent {
     })
   }
 
-  transcribeQuestion26(formAnswer){
+  transcribeEssay(formAnswer){
     return (
       <div>
         <h4>IV. PERTINENT NEW HISTORY - CURRENT SIGNS/SYMPTOMS - FINDINGS</h4>
