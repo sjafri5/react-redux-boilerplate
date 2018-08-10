@@ -69,7 +69,10 @@ class Main extends PureComponent {
     const title = QuestionMap[currentQuestion].question
 
     if (this.props.form.reviewForm) {
-      return <Review form={this.props.form} handleDownload={this.handleDownload.bind(this)}/>
+      return <Review 
+               form={this.props.form} 
+               submitResponse={this.props.submitResponse} 
+               handleDownload={this.handleDownload.bind(this)}/>
     } else if (currentQuestion === 0) {
       return <PatientName handleSubmit={this.handleSubmit.bind(this)} handleNameEnter={this.handleNameSubmit.bind(this)}/>
     } else if (currentQuestion === 27) {
@@ -87,8 +90,6 @@ class Main extends PureComponent {
               title={title}
               handleSelection={this.handleSelection.bind(this)} />
     }
-
-
   }
 
   render() {

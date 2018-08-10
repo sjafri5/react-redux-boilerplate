@@ -2,15 +2,36 @@ import React, { PureComponent } from 'react';
 import QuestionMap from '../../../question-map.json';
 import each from 'lodash/each'
 
+import { 
+  Question1, 
+  Question26, 
+  MultiSelect, 
+} from '../Questions';
+
 class Review extends PureComponent {
+  constructor(props){
+    super(props);
+    this.state = {
+      editMode: false 
+    }
+  }
+
   transcribeQuestions(){
     const questionCount = Array.from(Array(27)).map((e,i)=>(i+ 1).toString())
     return questionCount.map((QuestionNumber) => {
       return <div>
-        <h4>{QuestionMap[QuestionNumber].question}</h4>
+        <h4>{QuestionMap[QuestionNumber].question}  <a src='foo' onClick={(e) => this.handleEdit(e, QuestionNumber)}>edit</a></h4>
         {this.transcribeAnswers(QuestionNumber)}
         <br/>
       </div>
+    })
+  }
+
+  handleEdit(e, questionNumber) {
+    e.preventDefault();
+    this.setState({
+      editMode: true,
+      editQuestionNumber: questionNumber
     })
   }
 
@@ -64,8 +85,40 @@ class Review extends PureComponent {
     }
   }
 
+  handleSelection(response) {
+    //thi
+    const currentQuestion = this.state.editQuestionNumber
+    this.props.submitResponse({questionNumber: currentQuestion, response})
+    this.setState({
+      editMode: false
+    })
+  }
+
+  renderEdit(){
+    const currentQuestion = this.state.editQuestionNumber
+    const title = QuestionMap[currentQuestion].question
+
+    if (QuestionMap[currentQuestion].multiselect) {
+      return <MultiSelect
+        currentQuestion={currentQuestion}
+        title={title}
+        handleSelection={this.handleSelection.bind(this)} />
+    }
+    else {
+      return <Question1 
+        currentQuestion={currentQuestion}
+        title={title}
+        handleSelection={this.handleSelection.bind(this)} />
+    }
+
+  }
+
   render() {
     const { handleDownload } = this.props;
+    if (this.state.editMode) {
+      return this.renderEdit()
+    }
+
     return (
         <div>
           <h1>Review Page</h1>
