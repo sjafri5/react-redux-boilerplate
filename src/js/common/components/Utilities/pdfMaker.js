@@ -9,6 +9,8 @@ class PdfMaker {
     this.doc = new jsPDF()
     this.yAxis = 36;
 
+    var list = this.doc.getFontList()
+      //console.log('list', list);
     this.buildDocument();
   }
 
@@ -28,7 +30,7 @@ class PdfMaker {
     const patientName = this.formData.get('0')
 
     this.doc.setFontSize(13)
-    this.doc.text(["CHICAGO BEHAVIORAL HOSPITAL"], 10, 15);
+    this.doc.setFontStyle('bold')
     this.doc.text(["CHICAGO BEHAVIORAL HOSPITAL"], 10, 15);
     this.doc.text("|", 105, 0);
     this.doc.text("|", 105, 4);
@@ -39,7 +41,8 @@ class PdfMaker {
     this.doc.text("|", 105, 24);
     this.doc.text("PSYCHIATRIC PROGRESS NOTE", 12, 20);
     this.doc.text(`PATIENT: (${patientName})`, 140, 15);
-    this.doc.text("________________________________________________________________________________________________________________________________", 0, 24);
+    this.doc.text('_'.repeat(200), 0, 24);
+    this.doc.setFontStyle('normal')
   }
 
   transcribeDate(){
@@ -65,12 +68,17 @@ class PdfMaker {
       this.doc.setFontSize(12)
 
       if(questionNumber === '2'){
+        this.doc.setFontStyle('bold')
         this.doc.text('I. MENTAL STATUS ASSESSMENT', 10, this.yAxis);
+        this.doc.rect(8, 49, 194, 10, 's')
+        this.doc.setFontStyle('normal')
         this.yAxis += 8
       }
 
       if(questionNumber === '18'){
+        this.doc.setFontStyle('bold')
         this.doc.text('Risk of Harm To Self and Others', 10 , this.yAxis);
+        this.doc.setFontStyle('normal')
         this.transcribeHarmAnswers();
         this.yAxis += 15;
         return;
@@ -81,20 +89,28 @@ class PdfMaker {
       }
 
       if(questionNumber === '23'){
+        this.doc.setFontStyle('bold')
         this.doc.text('III. TREATMENT PLAN', 10, this.yAxis);
+        this.doc.rect(8, 86, 194, 10, 's')
+        this.doc.setFontStyle('normal')
         this.yAxis += 8
       }
 
       if(questionNumber === '20'){
         this.doc.addPage();
         this.yAxis = 20
+        this.doc.setFontStyle('bold')
         this.doc.text('II. ASSESSMENT', 10, this.yAxis);
+        this.doc.setFontStyle('normal')
+        this.doc.rect(8, 13, 194, 10, 's')
         this.yAxis += 8
         questionXAxis = 0
       }
 
       if (this.questionMap[questionNumber].format === "3") {
+        this.doc.setFontStyle('bold')
         this.doc.text(this.questionMap[questionNumber].question, 10 + questionXAxis, this.yAxis);
+        this.doc.setFontStyle('normal')
         this.transcribeTriplexAnswers(questionNumber, this.yAxis, questionXAxis)
         questionXAxis += 65;
 
@@ -106,7 +122,9 @@ class PdfMaker {
         return;
       }
 
+      this.doc.setFontStyle('bold')
       this.doc.text(this.questionMap[questionNumber].question, 10 , this.yAxis);
+      this.doc.setFontStyle('normal')
       this.transcribeAnswers(questionNumber)
 
         const singleLineQuestions = ['3', '11', '16']
@@ -275,7 +293,10 @@ class PdfMaker {
   }
 
   handleEssay(questionNumber, answer, index){
+    this.doc.setFontStyle('bold')
     this.doc.text('IV. PERTINENT NEW HISTORY - CURRENT SIGNS/SYMPTOMS - FINDINGS', 10, this.yAxis);
+    this.doc.rect(8, 218, 194, 10, 's')
+    this.doc.setFontStyle('normal')
 
     this.doc.setFontSize(8)
     const splitAnswer = this.doc.splitTextToSize(this.formData.get(questionNumber), 180);
